@@ -18,5 +18,4 @@ public class Login {
 		stage.setTitle("teste");
 		stage.show();
 	}
-
 }
