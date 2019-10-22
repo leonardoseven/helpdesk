@@ -40,4 +40,10 @@ public class MainScreenUser implements ChamarTela {
 		stage.setTitle("Tela Inicial");
 		stage.show();
 	}
+
+	@Override
+	public void retirardaquipqcoloqueisopracommitar() {
+		// TODO Auto-generated method stub
+		
+	}
 }

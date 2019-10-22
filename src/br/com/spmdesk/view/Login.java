@@ -74,4 +74,10 @@ public class Login implements ChamarTela {
 		stage.setTitle("Login");
 		stage.show();
 	}
+
+	@Override
+	public void retirardaquipqcoloqueisopracommitar() {
+		// TODO Auto-generated method stub
+		
+	}
 }
