@@ -1,4 +1,4 @@
-package br.com.spmdesk.view;
+package br.com.spmdesk.boundary;
 
 import br.com.spmdesk.interfaces.ChamarTela;
 import javafx.scene.Scene;
@@ -39,11 +39,5 @@ public class MainScreenUser implements ChamarTela {
 		stage.setScene(scene);
 		stage.setTitle("Tela Inicial");
 		stage.show();
-	}
-
-	@Override
-	public void retirardaquipqcoloqueisopracommitar() {
-		// TODO Auto-generated method stub
-		
 	}
 }

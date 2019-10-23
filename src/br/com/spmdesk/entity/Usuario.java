@@ -1,4 +1,4 @@
-package br.com.spmdesk.domain;
+package br.com.spmdesk.entity;
 
 public class Usuario {
 	

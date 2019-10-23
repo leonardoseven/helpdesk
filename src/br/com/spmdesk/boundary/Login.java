@@ -1,6 +1,5 @@
-package br.com.spmdesk.view;
+package br.com.spmdesk.boundary;
 
-import br.com.spmdesk.DAO.LoginDAO;
 import br.com.spmdesk.interfaces.ChamarTela;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class Login implements ChamarTela {
+public class Login implements EventHandler<ActionEvent>, ChamarTela {
 
 	public Login(Stage stage) {
 		chamarTela(stage);
@@ -41,11 +40,11 @@ public class Login implements ChamarTela {
 		// Redimencionando o tamanho minimo do GridPane
 		gridPane.setMinSize(300, 300);
 		
-		LoginDAO mat = new LoginDAO();
-		mat.teste();
+//		LoginDAO mat = new LoginDAO();
+//		mat.teste();
 
 		// Setando os Gaps do GridPane entre as colunas
-		gridPane.setVgap(5);
+		gridPane.setVgap(10);
 		gridPane.setHgap(5);
 
 		// Alinhamento do Grid
@@ -60,14 +59,7 @@ public class Login implements ChamarTela {
 		gridPane.add(txtPass, 1, 3);
 		gridPane.add(btnLogin, 1,4);
 		
-		btnLogin.setOnAction(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				new MainScreenUser(stage);
-			}
-		});
+		stage.addEventFilter(ActionEvent.ANY, this);
 		
 		Scene scene = new Scene(gridPane);
 		stage.setScene(scene);
@@ -76,8 +68,9 @@ public class Login implements ChamarTela {
 	}
 
 	@Override
-	public void retirardaquipqcoloqueisopracommitar() {
-		// TODO Auto-generated method stub
+	public void handle(ActionEvent event) {
+		System.out.println(event.getSource());
+		System.out.println(event.getTarget());
 		
 	}
 }

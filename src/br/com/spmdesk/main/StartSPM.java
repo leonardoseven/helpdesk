@@ -1,6 +1,6 @@
 package br.com.spmdesk.main;
 
-import br.com.spmdesk.view.Login;
+import br.com.spmdesk.boundary.Login;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
