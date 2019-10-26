@@ -19,6 +19,5 @@ public class DriverFactory {
 			e.printStackTrace();
 		}
 		return null;
-	//coloquei pra comiitar
 	}
 }

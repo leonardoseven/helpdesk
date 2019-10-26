@@ -1,5 +1,9 @@
 package br.com.spmdesk.boundary;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+import br.com.smpdesk.control.LoginControl;
 import br.com.spmdesk.interfaces.ChamarTela;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,26 +17,27 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Login implements EventHandler<ActionEvent>, ChamarTela {
-
+	private Stage stage;
+	
 	public Login(Stage stage) {
 		chamarTela(stage);
+		this.stage = stage;
 	}
+	
+	
+	// Label de usuário e senha
+	Label lblUser = new Label("Digite o seu Usuário");
+	Label lblPass = new Label("Digite a sua Senha");
 
+	// Area de recebimento de dados
+	TextField txtUser = new TextField();
+	PasswordField txtPass = new PasswordField();
+
+	// Botão para realização de login
+	Button btnLogin = new Button("Login");
+	
 	@Override
 	public void chamarTela(Stage stage) {
-		// TODO Auto-generated method stub
-
-		// Label de usuário e senha
-		Label lblUser = new Label("Digite o seu Usuário");
-		Label lblPass = new Label("Digite a sua Senha");
-
-		// Area de recebimento de dados
-		TextField txtUser = new TextField();
-		PasswordField txtPass = new PasswordField();
-
-		// Botão para realização de login
-		Button btnLogin = new Button("Login");
-
 		// Criação  da GridPanel e customização
 		GridPane gridPane = new GridPane();
 		gridPane.setStyle("-fx-background-color:#f8f4f3;");
@@ -69,8 +74,12 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 
 	@Override
 	public void handle(ActionEvent event) {
-		System.out.println(event.getSource());
-		System.out.println(event.getTarget());
-		
+		LoginControl login = new LoginControl();
+		if(true) {
+			String user = txtUser.getText();
+			String pass = txtPass.getText();
+			String path = login.verificaLogin(user, pass);
+			
+		}
 	}
 }

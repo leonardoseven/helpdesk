@@ -13,7 +13,6 @@ public class MainScreenUser implements ChamarTela {
 
 	@Override
 	public void chamarTela(Stage stage) {
-		// TODO Auto-generated method stub
 		// Area dos botões do usuário
 		Button btnChamado = new Button("Abrir um chamado");
 		Button btnRequisicao = new Button("Abrir uma requisição");
