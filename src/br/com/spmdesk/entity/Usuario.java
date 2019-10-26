@@ -3,6 +3,8 @@ package br.com.spmdesk.entity;
 public class Usuario {
 	
 	private String nome;
+	private String pass;
+	private String tipo;
 	private String registro;
 	
 	
