@@ -7,13 +7,15 @@ import java.sql.SQLException;
 
 public class LoginDAO {
 
-	private static final String VERIFICALOGIN = "SELECT tipo FROM tbuser";
-
-	private static Connection con = DriverFactory.getConnection();
-
+	private static Connection con = (Connection) DriverFactory.getInstance();
+	
+	// query para verificar o login e retorna qual o tipo do usuario
+	private static final String VERIFICALOGIN = "SELECT tipo FROM tbuser where nome = ? and pass = ?";
 	public String verificaLogin(String user, String pass) {
 		try {
 			PreparedStatement stm = (PreparedStatement) con.prepareStatement(VERIFICALOGIN);
+			stm.setString(1, user);
+			stm.setString(2, pass);
 			stm.execute();
 
 			String tipo = null;
@@ -22,8 +24,6 @@ public class LoginDAO {
 				tipo = rs.getString("tipo");
 			}
 			stm.close();
-			con.close();
-			
 			return tipo;
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -9,13 +9,7 @@ public class LoginControl {
 	public String verificaLogin(String user, String pass) {
 		String tipo = loginDAO.verificaLogin(user, pass);
 		if(tipo != null) {
-			if("admin".equals(tipo)) {
-				return "MainScreenUser";
-			}else if("padrao".equals(tipo)) {
-				
-			}else if("inspetor".equals(tipo)) {
-				
-			}
+			return tipo;
 		}
 		return null;
 	}

@@ -44,9 +44,6 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 		
 		// Redimencionando o tamanho minimo do GridPane
 		gridPane.setMinSize(300, 300);
-		
-//		LoginDAO mat = new LoginDAO();
-//		mat.teste();
 
 		// Setando os Gaps do GridPane entre as colunas
 		gridPane.setVgap(10);
@@ -75,10 +72,17 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 	@Override
 	public void handle(ActionEvent event) {
 		LoginControl login = new LoginControl();
-		if(true) {
+		if(event.getTarget().equals(btnLogin)) {
 			String user = txtUser.getText();
 			String pass = txtPass.getText();
 			String path = login.verificaLogin(user, pass);
+			if("admin".equals(path)) {
+				new MainScreenAdmin(stage);
+			}else if("padrao".equals(path)) {
+				new MainScreenUser(stage);
+			}else if("inspetor".equals(path)) {
+				
+			}
 			
 		}
 	}
