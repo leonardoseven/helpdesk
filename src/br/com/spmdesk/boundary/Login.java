@@ -81,9 +81,10 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 			}else if("padrao".equals(path)) {
 				new MainScreenUser(stage);
 			}else if("inspetor".equals(path)) {
-				
 			}
-			
+			else {
+				new AlertScreen(stage);
+			}
 		}
 	}
 }

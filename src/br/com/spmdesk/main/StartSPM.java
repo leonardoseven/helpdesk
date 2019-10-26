@@ -5,7 +5,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class StartSPM extends Application{
-//tiraaqui q é pra comittar
+
 	public static void main(String[] args) {
 		launch(args);
 	}

@@ -6,6 +6,7 @@ public class Usuario {
 	private String pass;
 	private String tipo;
 	private String registro;
+	private Setor nomeSetor;
 	
 	public String getNome() {
 		return nome;
@@ -30,6 +31,12 @@ public class Usuario {
 	}
 	public void setRegistro(String registro) {
 		this.registro = registro;
+	}
+	public Setor getNomeSetor() {
+		return nomeSetor;
+	}
+	public void setNomeSetor(Setor nomeSetor) {
+		this.nomeSetor = nomeSetor;
 	}
 	
 	
