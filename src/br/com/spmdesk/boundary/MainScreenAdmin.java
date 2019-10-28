@@ -1,6 +1,7 @@
 package br.com.spmdesk.boundary;
 
 import br.com.spmdesk.interfaces.ChamarTela;
+import br.com.spmdesk.utils.Background;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -30,21 +31,13 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 	@Override
 	public void chamarTela(Stage stage) {
 		BorderPane border = new BorderPane();
-		BorderPane header = new BorderPane();
 		Scene scene = new Scene(border);
 		GridPane gridpane = new GridPane();
 		Pane pane = new Pane();
 		
 		border.setMinSize(800, 600);
-		header.setMinSize(800, 100);
 		pane.setMinSize(350, 600);
-		border.setTop(header);
-		header.setStyle("-fx-background-color:#1A1842");
-		StackPane sp = new StackPane();
-		Image img = new Image("/images/monke.png");
-		ImageView imgView = new ImageView(img);
-		sp.getChildren().add(imgView);
-		header.setLeft(imgView);
+		border.setTop(Background.getBackground(800, 100));
 		border.setCenter(gridpane);
 		border.setLeft(pane);
 		

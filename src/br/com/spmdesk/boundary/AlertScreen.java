@@ -2,6 +2,7 @@ package br.com.spmdesk.boundary;
 
 import br.com.smpdesk.control.LoginControl;
 import br.com.spmdesk.interfaces.ChamarTela;
+import br.com.spmdesk.utils.Background;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -24,15 +25,12 @@ public class AlertScreen implements EventHandler<ActionEvent>, ChamarTela{
 	public void chamarTela(Stage stage) {
 		// TODO Auto-generated method stub
 		BorderPane border = new BorderPane();
-		BorderPane header = new BorderPane();
 		Scene scene = new Scene(border);
 		GridPane gridpane = new GridPane();
 		GridPane pane = new GridPane();
 		border.setMinSize(400,100);
-		header.setMinSize(400, 25);
 		pane.setMinSize(200, 75);
-		border.setTop(header);
-		header.setStyle("-fx-background-color:#1A1842");
+		border.setTop(Background.getBackground(400, 25));
 		border.setCenter(gridpane);
 		border.setLeft(pane);
 		pane.setHgap(10);
