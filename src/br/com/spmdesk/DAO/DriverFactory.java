@@ -25,7 +25,7 @@ public class DriverFactory {
 	private void getConnection() {		
 		String url = "jdbc:mysql://localhost/spmhelp";
 		String user = "root";
-		String password = "";
+		String password = "Serfecaf@ti";
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

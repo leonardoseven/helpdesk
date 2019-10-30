@@ -6,12 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
@@ -23,7 +20,6 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 	}
 	
 	Button btnGerenciarUsuario = new Button("Gestão de Usuários");
-	Button btnCadastro = new Button("Cadastrar usuário");
 	Button btnGerenciarCR = new Button("Gestão de C/R");
 	Button btnGerenciarEstoque = new Button("Gestão de Estoque");
 	
@@ -47,12 +43,10 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 		btnGerenciarUsuario.setMinSize(120, 100);
 		btnGerenciarCR.setMinSize(120, 100);
 		btnGerenciarEstoque.setMinSize(120, 100);
-		btnCadastro.setMinSize(120, 100);
 		
 		gridpane.add(btnGerenciarUsuario, 0, 3);
 		gridpane.add(btnGerenciarCR, 0, 4);
 		gridpane.add(btnGerenciarEstoque, 0, 5);
-		gridpane.add(btnCadastro, 0, 6);
 		stage.addEventFilter(ActionEvent.ANY, this);
 		
 		
@@ -71,8 +65,6 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 			System.out.println("ola");
 		}else if(event.getTarget().equals(btnGerenciarEstoque)) {
 			System.out.println("hello");
-		}else if (event.getTarget().equals(btnCadastro)) {
-			new CadastroScreen(stage);
 		}
 	}
 

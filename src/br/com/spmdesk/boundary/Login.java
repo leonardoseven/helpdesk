@@ -1,8 +1,5 @@
 package br.com.spmdesk.boundary;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
 import br.com.smpdesk.control.LoginControl;
 import br.com.spmdesk.interfaces.ChamarTela;
 import javafx.event.ActionEvent;
