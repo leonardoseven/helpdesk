@@ -80,7 +80,9 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 			}else if("inspetor".equals(path)) {
 			}
 			else {
-				new AlertScreen(stage);
+				new PopUpError("Opa, ocorreu um erro de login!", "Verifique seu usuário e senha se estão corretos e "
+				+ "volte a fazer login, caso o problema permaneça entre em contato com"
+				+ "o setor de T.I .", "br.com.spmdesk.boundary.Login", stage);
 			}
 		}
 	}

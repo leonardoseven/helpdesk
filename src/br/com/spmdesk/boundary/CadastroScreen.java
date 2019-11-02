@@ -113,8 +113,13 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 			new GestaoUsuario(stage);
 		}else if(event.getTarget().equals(cadastrar)) {
 			List<String> dados = getValues();
-			cadastroControl.insertUsuario(dados);
-			System.out.println("Sucesso");
+			if(dados == null) {
+				new PopUpError("Erro", "erro", "br.com.spmdesk.boundary.CadastroScreen", stage);
+			}else {
+				cadastroControl.insertUsuario(dados);
+				new GestaoUsuario(stage);
+			}
+			
 		}
 
 	}
@@ -125,8 +130,8 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 		String usuario  = txtUsuario.getText();
 		String senha =  txtSenha.getText();
 		String registro = txtRegistro.getText();
-		String tipoUsuario = tipoUser.getSelectionModel().getSelectedItem().toString();
-		String tipoSetores = tipoSetor.getSelectionModel().getSelectedItem().toString();
+		String tipoUsuario = "";//tipoUser.getSelectionModel().getSelectedItem().toString();
+		String tipoSetores = "";//tipoSetor.getSelectionModel().getSelectedItem().toString();
 		
 		if(!nome.equals("") && !usuario.equals("") && !senha.equals("") && !registro.equals("") && !tipoUsuario.equals("") && !tipoSetores.equals("")) {
 			dados.add(nome);
@@ -136,8 +141,6 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 			dados.add(registro);
 			dados.add(tipoSetores);
 			return dados;
-		}else {
-			// Mostrar tela de erro
 		}		
 		return null;
 	}
