@@ -2,12 +2,21 @@ package br.com.spmdesk.entity;
 
 public class Usuario {
 	
+	private int id;
 	private String nome;
 	private String pass;
 	private String tipo;
 	private String registro;
-	private Setor nomeSetor;
+	private String nomeSetor;
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -32,10 +41,10 @@ public class Usuario {
 	public void setRegistro(String registro) {
 		this.registro = registro;
 	}
-	public Setor getNomeSetor() {
+	public String getNomeSetor() {
 		return nomeSetor;
 	}
-	public void setNomeSetor(Setor nomeSetor) {
+	public void setNomeSetor(String nomeSetor) {
 		this.nomeSetor = nomeSetor;
 	}
 	

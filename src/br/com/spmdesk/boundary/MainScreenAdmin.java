@@ -62,9 +62,9 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 		if(event.getTarget().equals(btnGerenciarUsuario)) {
 			new GestaoUsuario(stage);
 		}else if(event.getTarget().equals(btnGerenciarCR)){
-			System.out.println("ola");
+			new GestaoCR(stage);
 		}else if(event.getTarget().equals(btnGerenciarEstoque)) {
-			System.out.println("hello");
+			new GestaoEstoque(stage);
 		}
 	}
 

@@ -1,9 +1,5 @@
 package br.com.spmdesk.boundary;
 
-import java.util.ArrayList;
-
-import br.com.smpdesk.control.GestaoUsuarioControl;
-import br.com.spmdesk.entity.Usuario;
 import br.com.spmdesk.interfaces.ChamarTela;
 import br.com.spmdesk.utils.Background;
 import javafx.event.ActionEvent;
@@ -11,26 +7,21 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
+public class GestaoCR implements EventHandler<ActionEvent>, ChamarTela {
 	private Stage stage;
 
-	public GestaoUsuario(Stage stage) {
+	public GestaoCR(Stage stage) {
 		chamarTela(stage);
 		this.stage = stage;
 	}
 
-	GestaoUsuarioControl gestaoControl = new GestaoUsuarioControl();
 	Button btnVoltar = new Button("Voltar");
-	Button btnCadastro = new Button("Novo Usuário");
 
 	@Override
 	public void chamarTela(Stage stage) {
@@ -45,24 +36,11 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		pane.setMinSize(250, 500);
 		bottom.getChildren().add(btnVoltar);
 		
-		gridpane.add(new Label("Usuários cadastrados:"),0,0);
-		gridpane.add(btnCadastro, 0, 1);
-		gridpane.add(new Label("nome"),0,2);
-		gridpane.add(new Label("senha"),1,2);
-		gridpane.add(new Label("tipo"),2,2);
-		
-		ArrayList<Usuario> listaUsuario = gestaoControl.getAllUsers();
-		for (int i = 0; i < listaUsuario.size(); i++) {
-			gridpane.add(new Label(listaUsuario.get(i).getNome()), 0, i+3);
-			gridpane.add(new Label(listaUsuario.get(i).getPass()), 1, i+3);
-			gridpane.add(new Label(listaUsuario.get(i).getTipo()), 2, i+3);
-		}
-		
-		gridpaneRigth.add(new Label("Ações"),0, 0);
-//		for (int i = 0; i < listaUsuario.size(); i++) {
-//			gridpaneRigth.add(new Button("Editar"),0, i+3);
-//			gridpaneRigth.add(new Button("Excluir"),1, i+3);
-//		}
+		gridpane.add(new Label("Requisitos e chamados ativos:"),0,0);
+		gridpane.add(new Label("Tipo (chamado ou requisição)"),0,1);
+		gridpane.add(new Label("Solicitante"),1,1);
+		gridpane.add(new Label("Descrição "),2,1);
+		gridpane.add(new Label("Setor"),3,1);
 		
 		gridpaneRigth.setHgap(5);
 		gridpaneRigth.setVgap(5);
@@ -78,7 +56,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 
 		stage.addEventFilter(ActionEvent.ANY, this);
 		stage.setScene(scene);
-		stage.setTitle("Gestão de Usuários");
+		stage.setTitle("Gestão de CR");
 		stage.show();
 	}
 
@@ -86,10 +64,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 	public void handle(ActionEvent event) {
 		if(event.getTarget().equals(btnVoltar)) {
 			new MainScreenAdmin(stage);
-		}else if(event.getTarget().equals(btnCadastro)) {
-			new CadastroScreen(stage);
 		}
-
 	}
 
 }

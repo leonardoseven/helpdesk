@@ -20,15 +20,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
+public class GestaoEstoque implements EventHandler<ActionEvent>, ChamarTela {
 	private Stage stage;
 
-	public GestaoUsuario(Stage stage) {
+	public GestaoEstoque(Stage stage) {
 		chamarTela(stage);
 		this.stage = stage;
 	}
 
-	GestaoUsuarioControl gestaoControl = new GestaoUsuarioControl();
+
 	Button btnVoltar = new Button("Voltar");
 	Button btnCadastro = new Button("Novo Usuário");
 
@@ -45,24 +45,12 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		pane.setMinSize(250, 500);
 		bottom.getChildren().add(btnVoltar);
 		
-		gridpane.add(new Label("Usuários cadastrados:"),0,0);
-		gridpane.add(btnCadastro, 0, 1);
-		gridpane.add(new Label("nome"),0,2);
-		gridpane.add(new Label("senha"),1,2);
-		gridpane.add(new Label("tipo"),2,2);
+		gridpane.add(new Label("Usuários Estoque:"),0,0);
 		
-		ArrayList<Usuario> listaUsuario = gestaoControl.getAllUsers();
-		for (int i = 0; i < listaUsuario.size(); i++) {
-			gridpane.add(new Label(listaUsuario.get(i).getNome()), 0, i+3);
-			gridpane.add(new Label(listaUsuario.get(i).getPass()), 1, i+3);
-			gridpane.add(new Label(listaUsuario.get(i).getTipo()), 2, i+3);
-		}
-		
-		gridpaneRigth.add(new Label("Ações"),0, 0);
-//		for (int i = 0; i < listaUsuario.size(); i++) {
-//			gridpaneRigth.add(new Button("Editar"),0, i+3);
-//			gridpaneRigth.add(new Button("Excluir"),1, i+3);
-//		}
+		gridpane.add(new Label("Nome do componente"),0,1);
+		gridpane.add(new Label("Setor responsavel"),1,1);
+		gridpane.add(new Label("Quantidade minima permitida"),2,1);
+		gridpane.add(new Label("Quantidade atual"),3,1);
 		
 		gridpaneRigth.setHgap(5);
 		gridpaneRigth.setVgap(5);
@@ -78,7 +66,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 
 		stage.addEventFilter(ActionEvent.ANY, this);
 		stage.setScene(scene);
-		stage.setTitle("Gestão de Usuários");
+		stage.setTitle("Gestão de Estoque");
 		stage.show();
 	}
 

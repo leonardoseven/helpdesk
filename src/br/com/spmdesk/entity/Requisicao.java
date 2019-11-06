@@ -3,18 +3,18 @@ package br.com.spmdesk.entity;
 import java.util.Date;
 
 public class Requisicao {
-	private String mensagemAjuda;
+	private String descricao;
 	private Usuario solicitante;
-	private Date dataChamado;
+	private String dataChamado;
 	private int qtdPeça;
 	private Componente nomePeca;
 	private String assunto;
 	
-	public String getMensagemAjuda() {
-		return mensagemAjuda;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setMensagemAjuda(String mensagemAjuda) {
-		this.mensagemAjuda = mensagemAjuda;
+	public void setDescricao(String mensagemAjuda) {
+		this.descricao = mensagemAjuda;
 	}
 	public Usuario getSolicitante() {
 		return solicitante;
@@ -22,10 +22,10 @@ public class Requisicao {
 	public void setSolicitante(Usuario solicitante) {
 		this.solicitante = solicitante;
 	}
-	public Date getDataChamado() {
+	public String getDataChamado() {
 		return dataChamado;
 	}
-	public void setDataChamado(Date dataChamado) {
+	public void setDataChamado(String dataChamado) {
 		this.dataChamado = dataChamado;
 	}
 	public int getQtdPeça() {

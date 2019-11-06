@@ -114,7 +114,7 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 		}else if(event.getTarget().equals(cadastrar)) {
 			List<String> dados = getValues();
 			if(dados == null) {
-				new PopUpError("Erro", "erro", "br.com.spmdesk.boundary.CadastroScreen", stage);
+				new PopUpError("Os campos não podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.CadastroScreen", stage);
 			}else {
 				cadastroControl.insertUsuario(dados);
 				new GestaoUsuario(stage);
@@ -130,8 +130,8 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 		String usuario  = txtUsuario.getText();
 		String senha =  txtSenha.getText();
 		String registro = txtRegistro.getText();
-		String tipoUsuario = "";//tipoUser.getSelectionModel().getSelectedItem().toString();
-		String tipoSetores = "";//tipoSetor.getSelectionModel().getSelectedItem().toString();
+		String tipoUsuario = tipoUser.getSelectionModel().getSelectedItem().toString();
+		String tipoSetores = tipoSetor.getSelectionModel().getSelectedItem().toString();
 		
 		if(!nome.equals("") && !usuario.equals("") && !senha.equals("") && !registro.equals("") && !tipoUsuario.equals("") && !tipoSetores.equals("")) {
 			dados.add(nome);

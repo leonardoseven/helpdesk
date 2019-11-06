@@ -1,7 +1,9 @@
 package br.com.spmdesk.boundary;
 
 import br.com.smpdesk.control.LoginControl;
+import br.com.spmdesk.entity.Usuario;
 import br.com.spmdesk.interfaces.ChamarTela;
+import br.com.spmdesk.utils.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -72,12 +74,13 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 		if(event.getTarget().equals(btnLogin)) {
 			String user = txtUser.getText();
 			String pass = txtPass.getText();
-			String path = login.verificaLogin(user, pass);
-			if("admin".equals(path)) {
+			Usuario usuario = login.verificaLogin(user, pass);
+			User.setUsuario(usuario);
+			if("admin".equals(usuario.getTipo())) {
 				new MainScreenAdmin(stage);
-			}else if("padrao".equals(path)) {
+			}else if("padrao".equals(usuario.getTipo())) {
 				new MainScreenUser(stage);
-			}else if("inspetor".equals(path)) {
+			}else if("inspetor".equals(usuario.getTipo())) {
 			}
 			else {
 				new PopUpError("Opa, ocorreu um erro de login!", "Verifique seu usuário e senha se estão corretos e "

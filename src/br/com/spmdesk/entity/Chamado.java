@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Chamado {
 	
-	private String mensagemAjuda;
+	private String descricao;
 	private Usuario solicitante;
 	private Date dataChamado;
 	private String assunto;
@@ -26,11 +26,11 @@ public class Chamado {
 	}
 
 	public String getMensagemAjuda() {
-		return mensagemAjuda;
+		return descricao;
 	}
 
 	public void setMensagemAjuda(String mensagemAjuda) {
-		this.mensagemAjuda = mensagemAjuda;
+		this.descricao = mensagemAjuda;
 	}
 
 	public Usuario getSolicitante() {
