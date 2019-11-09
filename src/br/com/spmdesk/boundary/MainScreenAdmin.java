@@ -23,6 +23,7 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 	Button btnGerenciarUsuario = new Button("Gestão de Usuários");
 	Button btnGerenciarCR = new Button("Gestão de C/R");
 	Button btnGerenciarEstoque = new Button("Gestão de Estoque");
+	Button btnCadastrarSetor = new Button("Cadastrar Setor");
 	
 
 	@Override
@@ -47,6 +48,7 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 		gridpane.add(btnGerenciarUsuario, 0, 0);
 		gridpane.add(btnGerenciarCR, 1, 0);
 		gridpane.add(btnGerenciarEstoque, 2, 0);
+		gridpane.add(btnCadastrarSetor, 0, 1);
 		
 		gridpane.setStyle("-fx-font-size: 25px;");
 		
@@ -67,6 +69,8 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 			new GestaoCR(stage);
 		}else if(event.getTarget().equals(btnGerenciarEstoque)) {
 			new GestaoEstoque(stage);
+		}else if(event.getTarget().equals(btnCadastrarSetor)) {
+			new CadastroSetorScreen(stage);
 		}
 	}
 
