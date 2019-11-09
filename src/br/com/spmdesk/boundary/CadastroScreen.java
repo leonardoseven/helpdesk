@@ -62,6 +62,7 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 		bottom.getChildren().add(btnVoltar);
 				
 		border.setMinSize(800, 500);
+		//border.setMaxSize(800, 500);
 		border.setTop(Background.getBackground(800, 100));
 		border.setCenter(gridpane);
 		border.setBottom(bottom);

@@ -54,6 +54,8 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 		// Alinhamento do Grid
 		gridPane.setAlignment(Pos.CENTER);
 
+		gridPane.setStyle("-fx-font-size: 20px");
+		
 		//Adicionando todos os elementos criado a interface e os colocando no lugar desejado
 		gridPane.add(lblUser, 1, 0);
 		gridPane.add(txtUser, 1, 1);
@@ -87,9 +89,9 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 			}else if("inspetor".equals(usuario.getTipo())) {
 			}
 			else {
-				new PopUpError("Opa, ocorreu um erro de login!", "Verifique seu usuário e senha se estão corretos e "
-				+ "volte a fazer login, caso o problema permaneça entre em contato com"
-				+ "o setor de T.I .", "br.com.spmdesk.boundary.Login", stage);
+				String title = "Opa, ocorreu um erro ao logar";
+				String subTitle = "Verifique seu usuário e senha se estão corretos";
+				new PopUpError(title, subTitle,"br.com.spmdesk.boundary.Login", stage);
 			}
 		}
 	}

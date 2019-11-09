@@ -36,7 +36,7 @@ public class PopUpError implements EventHandler<ActionEvent>,ChamarTela{
 		Scene scene = new Scene(borderPrincipal);
 		GridPane gPane = new GridPane();
 		
-		stage.addEventFilter(ActionEvent.ANY, this);
+		
 		
 		borderPrincipal.setMinSize(800, 500);
 		borderPrincipal.setTop(Background.getBackground(800, 100));
@@ -51,6 +51,14 @@ public class PopUpError implements EventHandler<ActionEvent>,ChamarTela{
 		
 		gPane.setAlignment(Pos.CENTER);
 		
+		StringBuilder css = new StringBuilder();
+		css.append("-fx-background-image: url('/images/error.jpg') no-repeat; ");
+		css.append("-fx-background-position: center; ");
+		css.append("-fx-font-size: 30px; ");
+		
+		gPane.setStyle(css.toString());
+		
+		stage.addEventFilter(ActionEvent.ANY, this);
 		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.setTitle("Ops Ocorreu um erro");

@@ -14,7 +14,7 @@ public class User {
  
 	}
     
-    public static Usuario getUsuario(Usuario usuario) {
+    public static Usuario getUsuario() {
         return instance;
 	}
 }
