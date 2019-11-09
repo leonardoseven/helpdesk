@@ -4,6 +4,7 @@ import br.com.spmdesk.interfaces.ChamarTela;
 import br.com.spmdesk.utils.Background;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -29,13 +30,12 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 		BorderPane border = new BorderPane();
 		Scene scene = new Scene(border);
 		GridPane gridpane = new GridPane();
-		Pane pane = new Pane();
 		
-		border.setMinSize(800, 600);
-		pane.setMinSize(350, 600);
+		border.setMinSize(800, 500);
 		border.setTop(Background.getBackground(800, 100));
 		border.setCenter(gridpane);
-		border.setLeft(pane);
+		
+		gridpane.setAlignment(Pos.CENTER);
 		
 		// Setando os Gaps do GridPane entre as colunas
 		gridpane.setVgap(10);
@@ -47,9 +47,9 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 		gridpane.add(btnGerenciarUsuario, 0, 3);
 		gridpane.add(btnGerenciarCR, 0, 4);
 		gridpane.add(btnGerenciarEstoque, 0, 5);
+		
 		stage.addEventFilter(ActionEvent.ANY, this);
-		
-		
+		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.setTitle("Menu admin");
 		stage.show();

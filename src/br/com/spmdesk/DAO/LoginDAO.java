@@ -12,7 +12,7 @@ public class LoginDAO {
 	private static Connection con = (Connection) DriverFactory.getInstance();
 	
 	// query para verificar o login e retorna qual o tipo do usuario
-	private static final String VERIFICALOGIN = "SELECT id, tipo, nome, resgistro, setor FROM tbuser where nome = ? and pass = ?";
+	private static final String VERIFICALOGIN = "SELECT id, tipo, nome, registro, setor FROM tbuser where nome = ? and pass = ?";
 	public Usuario verificaLogin(String user, String pass) {
 		try {
 			PreparedStatement stm = (PreparedStatement) con.prepareStatement(VERIFICALOGIN);

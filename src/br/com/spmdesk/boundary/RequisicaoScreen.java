@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -49,16 +50,13 @@ public class RequisicaoScreen implements EventHandler<ActionEvent>, ChamarTela {
 		BorderPane border = new BorderPane();
 		Scene scene = new Scene(border);
 		GridPane gridpane = new GridPane();
-		Pane pane = new Pane();
 		FlowPane bottom = new FlowPane();
 		
 		bottom.getChildren().add(btnVoltar);
 				
-		border.setMinSize(800, 450);
-		pane.setMinSize(150,1);
+		border.setMinSize(800, 500);
 		border.setTop(Background.getBackground(800, 100));
 		border.setCenter(gridpane);
-		border.setLeft(pane);
 		border.setBottom(bottom);		
 		
 		cadastrar.setMinWidth(250);
@@ -66,6 +64,7 @@ public class RequisicaoScreen implements EventHandler<ActionEvent>, ChamarTela {
 		gridpane.setHgap(10);
 		gridpane.setVgap(10);
 		
+		gridpane.setAlignment(Pos.CENTER);
 
 		gridpane.add(new Label("Digite o assunto da requisição"), 0, 2);
 		gridpane.add(txtAssunto, 0, 3);
@@ -78,6 +77,7 @@ public class RequisicaoScreen implements EventHandler<ActionEvent>, ChamarTela {
 		gridpane.add(cadastrar, 0, 11); // column=0
 	
 		stage.addEventFilter(ActionEvent.ANY, this);
+		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.setTitle("Cadastro de Requisição");
 		stage.show();

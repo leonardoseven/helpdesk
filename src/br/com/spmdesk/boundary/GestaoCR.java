@@ -4,6 +4,7 @@ import br.com.spmdesk.interfaces.ChamarTela;
 import br.com.spmdesk.utils.Background;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -31,9 +32,7 @@ public class GestaoCR implements EventHandler<ActionEvent>, ChamarTela {
 		GridPane gridpaneRigth = new GridPane();
 		FlowPane bottom = new FlowPane();
 		
-		Pane pane = new Pane();
-		border.setMinSize(500, 500);
-		pane.setMinSize(250, 500);
+		border.setMinSize(800, 500);
 		bottom.getChildren().add(btnVoltar);
 		
 		gridpane.add(new Label("Requisitos e chamados ativos:"),0,0);
@@ -48,13 +47,15 @@ public class GestaoCR implements EventHandler<ActionEvent>, ChamarTela {
 		gridpane.setHgap(20);
 		gridpane.setVgap(10);
 		
+		gridpane.setAlignment(Pos.CENTER);
+		
 		border.setTop(Background.getBackground(800, 100));
 		border.setCenter(gridpane);
-		border.setLeft(pane);
 		border.setRight(gridpaneRigth);
 		border.setBottom(bottom);
 
 		stage.addEventFilter(ActionEvent.ANY, this);
+		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.setTitle("Gestão de CR");
 		stage.show();

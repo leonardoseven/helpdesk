@@ -6,6 +6,7 @@ import br.com.spmdesk.interfaces.ChamarTela;
 import br.com.spmdesk.utils.Background;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -37,8 +38,8 @@ public class PopUpError implements EventHandler<ActionEvent>,ChamarTela{
 		
 		stage.addEventFilter(ActionEvent.ANY, this);
 		
-		borderPrincipal.setMinSize(400,100);
-		borderPrincipal.setTop(Background.getBackground(400, 25));
+		borderPrincipal.setMinSize(800, 500);
+		borderPrincipal.setTop(Background.getBackground(800, 100));
 		borderPrincipal.setCenter(gPane);
 		borderPrincipal.setBottom(btnOk);
 		
@@ -48,6 +49,9 @@ public class PopUpError implements EventHandler<ActionEvent>,ChamarTela{
 		gPane.setVgap(15);
 		gPane.setHgap(12);
 		
+		gPane.setAlignment(Pos.CENTER);
+		
+		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.setTitle("Ops Ocorreu um erro");
 		stage.show();

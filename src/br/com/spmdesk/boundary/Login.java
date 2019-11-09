@@ -3,6 +3,7 @@ package br.com.spmdesk.boundary;
 import br.com.smpdesk.control.LoginControl;
 import br.com.spmdesk.entity.Usuario;
 import br.com.spmdesk.interfaces.ChamarTela;
+import br.com.spmdesk.utils.Background;
 import br.com.spmdesk.utils.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -38,11 +40,12 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 	@Override
 	public void chamarTela(Stage stage) {
 		// Criação  da GridPanel e customização
+		BorderPane border = new BorderPane();
 		GridPane gridPane = new GridPane();
 		gridPane.setStyle("-fx-background-color:#f8f4f3;");
 		
 		// Redimencionando o tamanho minimo do GridPane
-		gridPane.setMinSize(300, 300);
+		border.setMinSize(800, 500);
 
 		// Setando os Gaps do GridPane entre as colunas
 		gridPane.setVgap(10);
@@ -52,17 +55,18 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 		gridPane.setAlignment(Pos.CENTER);
 
 		//Adicionando todos os elementos criado a interface e os colocando no lugar desejado
-		
-		btnLogin.setMinWidth(150);
 		gridPane.add(lblUser, 1, 0);
 		gridPane.add(txtUser, 1, 1);
 		gridPane.add(lblPass, 1, 2);
 		gridPane.add(txtPass, 1, 3);
 		gridPane.add(btnLogin, 1,4);
 		
-		stage.addEventFilter(ActionEvent.ANY, this);
+		border.setCenter(gridPane);
+		border.setTop(Background.getBackground(800, 100));
 		
-		Scene scene = new Scene(gridPane);
+		Scene scene = new Scene(border);
+		stage.addEventFilter(ActionEvent.ANY, this);
+		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.setTitle("Login");
 		stage.show();
