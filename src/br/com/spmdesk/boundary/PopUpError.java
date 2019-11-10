@@ -52,7 +52,7 @@ public class PopUpError implements EventHandler<ActionEvent>,ChamarTela{
 		gPane.setAlignment(Pos.CENTER);
 		
 		StringBuilder css = new StringBuilder();
-		css.append("-fx-background-image: url('/images/error.jpg') no-repeat; ");
+		css.append("-fx-background-image: url('/images/erros.png') no-repeat; ");
 		css.append("-fx-background-position: center; ");
 		css.append("-fx-font-size: 30px; ");
 		

@@ -41,14 +41,15 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 		// Setando os Gaps do GridPane entre as colunas
 		gridpane.setVgap(10);
 		gridpane.setHgap(10);
-//		btnGerenciarUsuario.setMinSize(120, 100);
-//		btnGerenciarCR.setMinSize(120, 100);
-//		btnGerenciarEstoque.setMinSize(120, 100);
+		btnGerenciarUsuario.setMinSize(300, 50);
+		btnGerenciarCR.setMinSize(300, 50);
+		btnGerenciarEstoque.setMinSize(300, 50);
+		btnCadastrarSetor.setMinSize(300, 50);
 		
 		gridpane.add(btnGerenciarUsuario, 0, 0);
 		gridpane.add(btnGerenciarCR, 1, 0);
 		gridpane.add(btnGerenciarEstoque, 2, 0);
-		gridpane.add(btnCadastrarSetor, 0, 1);
+		gridpane.add(btnCadastrarSetor, 1, 1);
 		
 		gridpane.setStyle("-fx-font-size: 25px;");
 		

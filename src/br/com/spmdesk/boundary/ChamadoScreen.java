@@ -1,11 +1,13 @@
 package br.com.spmdesk.boundary;
-
+ 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.smpdesk.control.CadastroScreenControl;
+import br.com.spmdesk.entity.Usuario;
 import br.com.spmdesk.interfaces.ChamarTela;
 import br.com.spmdesk.utils.Background;
+import br.com.spmdesk.utils.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,6 +36,7 @@ public class ChamadoScreen implements EventHandler<ActionEvent>, ChamarTela {
 	}
 	
 	ObservableList<String> optionsSetor = FXCollections.observableArrayList("RH","TI", "Comercial");
+	
 	ComboBox tipoSetor = new ComboBox(optionsSetor);
 	
 	TextField txtAssunto = new TextField();
@@ -81,9 +84,17 @@ public class ChamadoScreen implements EventHandler<ActionEvent>, ChamarTela {
 
 	@Override
 	public void handle(ActionEvent event) {
+		
 		if(event.getTarget().equals(btnVoltar)) {
-			new MainScreenUser(stage);
-		}else if(event.getTarget().equals(cadastrar)) {
+			Usuario usuario = User.getUsuario();
+			if("inspetor".equals(usuario.getTipo())) {
+				new MainScreenInspetor(stage);
+			}
+			else {
+				new MainScreenUser(stage);
+			}
+			
+		} if(event.getTarget().equals(cadastrar)) {
 			
 		}
 
