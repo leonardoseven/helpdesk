@@ -16,3 +16,12 @@ CREATE table tbsetor (
 	nome varchar(30) not null, 
 	nome_gestor varchar(30) not null 
 	);
+	
+create table tbcomponente (
+	id int PRIMARY KEY AUTO_INCREMENT,
+    nome varchar(50) not null,
+    descricao varchar(50) not null,
+    preco decimal(10,2) not null,
+    quantidade int not null
+
+);

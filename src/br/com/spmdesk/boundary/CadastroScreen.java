@@ -19,7 +19,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
@@ -45,7 +44,7 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 	Label lblSetor = new Label("Informe o Setor do funcionário");
 	Button btnVoltar = new Button("Voltar");
 	Button cadastrar = new Button("CADASTRAR");
-	ObservableList<String> optionsSetor = FXCollections.observableArrayList("RH","TI", "Comercial");
+	ObservableList<String> optionsSetor = FXCollections.observableArrayList(getListSetor());
 	ComboBox tipoSetor = new ComboBox(optionsSetor);
 	ObservableList<String> optionsUser = FXCollections.observableArrayList("admin","padrao", "inspetor");
 	ComboBox tipoUser = new ComboBox(optionsUser);
@@ -62,7 +61,6 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 		bottom.getChildren().add(btnVoltar);
 				
 		border.setMinSize(800, 500);
-		//border.setMaxSize(800, 500);
 		border.setTop(Background.getBackground(800, 100));
 		border.setCenter(gridpane);
 		border.setBottom(bottom);
@@ -97,12 +95,17 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 		gridpane.add(tipoSetor, 0, 14); // column=0
 
 		gridpane.add(cadastrar, 0, 15); // column=0
-	
+		
 		stage.addEventFilter(ActionEvent.ANY, this);
 		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.setTitle("Cadastro de Usuários");
 		stage.show();
+		
+		boolean possuiItemNoCombo = cadastroControl.possiuSetor();
+		if(!possuiItemNoCombo) {
+			new PopUpError("Você ainda não cadastrou um setor", "Cadastre um setor para cadastrar um usuario","br.com.spmdesk.boundary.CadastroSetorScreen", stage);
+		}
 	}
 
 	@Override
@@ -128,7 +131,13 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 		String usuario  = txtUsuario.getText();
 		String senha =  txtSenha.getText();
 		String registro = txtRegistro.getText();
+		if(tipoUser.getSelectionModel().isEmpty()) {
+			return null;
+		}
 		String tipoUsuario = tipoUser.getSelectionModel().getSelectedItem().toString();
+		if(tipoSetor.getSelectionModel().isEmpty()) {
+			return null;
+		}
 		String tipoSetores = tipoSetor.getSelectionModel().getSelectedItem().toString();
 		
 		if(!nome.equals("") && !usuario.equals("") && !senha.equals("") && !registro.equals("") && !tipoUsuario.equals("") && !tipoSetores.equals("")) {
@@ -141,6 +150,10 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 			return dados;
 		}		
 		return null;
+	}
+	
+	private ArrayList<String> getListSetor() {
+		return cadastroControl.getListSetor();
 	}
 
 }

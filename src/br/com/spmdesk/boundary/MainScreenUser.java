@@ -33,11 +33,11 @@ public class MainScreenUser implements EventHandler<ActionEvent>, ChamarTela {
 		border.setCenter(gridPainel);
 
 		gridPainel.setMinSize(800, 500);
+		gridPainel.setMaxSize(800, 500);
 		
 		gridPainel.setAlignment(Pos.CENTER);
 		
 		// Espaçamento dos elementos
-		gridPainel.setVgap(25);
 		gridPainel.setHgap(25);
 		
 		// Botões

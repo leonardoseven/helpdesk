@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
@@ -24,6 +23,7 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 	Button btnGerenciarCR = new Button("Gestão de C/R");
 	Button btnGerenciarEstoque = new Button("Gestão de Estoque");
 	Button btnCadastrarSetor = new Button("Cadastrar Setor");
+	Button btnCadastrarComponente = new Button("Cadastrar Componente");
 	
 
 	@Override
@@ -41,16 +41,20 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 		// Setando os Gaps do GridPane entre as colunas
 		gridpane.setVgap(10);
 		gridpane.setHgap(10);
-//		btnGerenciarUsuario.setMinSize(120, 100);
-//		btnGerenciarCR.setMinSize(120, 100);
-//		btnGerenciarEstoque.setMinSize(120, 100);
+		
+		btnGerenciarUsuario.setPrefSize(250, 50);
+		btnGerenciarCR.setPrefSize(250, 50);
+		btnGerenciarEstoque.setPrefSize(250, 50);
+		btnCadastrarSetor.setPrefSize(250, 50);
+		btnCadastrarComponente.setPrefSize(250, 50);
 		
 		gridpane.add(btnGerenciarUsuario, 0, 0);
 		gridpane.add(btnGerenciarCR, 1, 0);
 		gridpane.add(btnGerenciarEstoque, 2, 0);
 		gridpane.add(btnCadastrarSetor, 0, 1);
+		gridpane.add(btnCadastrarComponente, 1, 1);
 		
-		gridpane.setStyle("-fx-font-size: 25px;");
+		gridpane.setStyle("-fx-font-size: 20px;");
 		
 		stage.addEventFilter(ActionEvent.ANY, this);
 		stage.setResizable(false);
@@ -71,6 +75,8 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 			new GestaoEstoque(stage);
 		}else if(event.getTarget().equals(btnCadastrarSetor)) {
 			new CadastroSetorScreen(stage);
+		}else if(event.getTarget().equals(btnCadastrarComponente)) {
+			new CadastroComponenteScreen(stage);
 		}
 	}
 

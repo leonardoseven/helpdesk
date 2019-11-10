@@ -1,8 +1,7 @@
 package br.com.spmdesk.boundary;
 
-import br.com.smpdesk.control.CadastroSetorScreenControl;
-import br.com.spmdesk.entity.Setor;
-import br.com.spmdesk.entity.Usuario;
+import br.com.smpdesk.control.CadastroComponenteScreenControl;
+import br.com.spmdesk.entity.Componente;
 import br.com.spmdesk.interfaces.ChamarTela;
 import br.com.spmdesk.utils.Background;
 import javafx.event.ActionEvent;
@@ -11,27 +10,33 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class CadastroSetorScreen implements EventHandler<ActionEvent>, ChamarTela {
+public class CadastroComponenteScreen implements EventHandler<ActionEvent>, ChamarTela {
 
 	private Stage stage;
 
-	public CadastroSetorScreen(Stage stage) {
+	public CadastroComponenteScreen(Stage stage) {
 		chamarTela(stage);
 		this.stage = stage;
 	}
-	private CadastroSetorScreenControl cadastroSetorControl = new CadastroSetorScreenControl();
+	private CadastroComponenteScreenControl cadastroComponenteScreenControl = new CadastroComponenteScreenControl();
 	
-	Label lblCadastro = new Label("Cadastro de Setor");
-	Label lblNome = new Label("Insira o nome do Setor");
+	Label lblCadastro = new Label("Cadastro de Componente");
+	Label lblNome = new Label("Insira o nome do Componente");
 	TextField txtNome = new TextField();
-	Label lblUsuario = new Label("Insira o nome do responsavel pelo  setor");
-	TextField txtUsuario = new TextField();
+	Label lblpreco = new Label("Insira o preco do componente");
+	TextField txtpreco = new TextField();
+	Label lblqtd = new Label("Insira a quantidade desse componente no estoque");
+	TextField txtqtd= new TextField();
+	Label lblDescricao = new Label("Insira a descricao desse componente");
+	TextArea txtADescricao = new TextArea();
+	
 	Button btnVoltar = new Button("Voltar");
 	Button cadastrar = new Button("Cadastrar");
 	
@@ -52,9 +57,10 @@ public class CadastroSetorScreen implements EventHandler<ActionEvent>, ChamarTel
 		border.setBottom(bottom);
 		
 		cadastrar.setMinWidth(250);
+		txtADescricao.setMaxHeight(100);
 		
 		gridpane.setHgap(10);
-		gridpane.setVgap(10);
+		gridpane.setVgap(5);
 		
 		gridpane.setAlignment(Pos.CENTER);
 		
@@ -62,10 +68,16 @@ public class CadastroSetorScreen implements EventHandler<ActionEvent>, ChamarTel
 		gridpane.add(lblNome, 0, 3); //  column=0
 		gridpane.add(txtNome, 0, 4); //  column=0
 		
-		gridpane.add(lblUsuario, 0, 5); //  column=0
-		gridpane.add(txtUsuario, 0, 6); //  column=0
+		gridpane.add(lblpreco, 0, 5); //  column=0
+		gridpane.add(txtpreco, 0, 6); //  column=0
 		
-		gridpane.add(cadastrar, 0, 8); // column=0
+		gridpane.add(lblqtd, 0, 7); //  column=0
+		gridpane.add(txtqtd, 0, 8); //  column=0
+		
+		gridpane.add(lblDescricao, 0, 9); //  column=0
+		gridpane.add(txtADescricao, 0, 10); //  column=0
+		
+		gridpane.add(cadastrar, 0, 11); // column=0
 	
 		gridpane.setStyle("-fx-font-size: 15px;");
 		
@@ -81,11 +93,11 @@ public class CadastroSetorScreen implements EventHandler<ActionEvent>, ChamarTel
 		if(event.getTarget().equals(btnVoltar)) {
 			new MainScreenAdmin(stage);
 		}else if(event.getTarget().equals(cadastrar)) {
-			Setor setor = getSetor();
-			if(setor == null) {
+			Componente componente = getComponente();
+			if(componente == null) {
 				new PopUpError("Os campos não podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.MainScreenAdmin", stage);
 			}else {
-				cadastroSetorControl.saveSetor(setor);
+				cadastroComponenteScreenControl.saveComponente(componente);
 				new MainScreenAdmin(stage);
 			}
 			
@@ -93,17 +105,17 @@ public class CadastroSetorScreen implements EventHandler<ActionEvent>, ChamarTel
 
 	}
 	
-	public Setor getSetor(){
-		Setor setor = new Setor();
-		Usuario usuario = new Usuario();
-		if( !"".equals(txtUsuario.getText()) && txtUsuario.getText() != null  && !"".equals(txtNome.getText()) && txtNome.getText() != null) {
-			usuario.setNomeSetor(txtUsuario.getText());
-			setor.setNomeSetor(txtNome.getText());
-			setor.setGestor(usuario);
-			return setor;
+	public Componente getComponente(){
+		Componente componente = new Componente();
+		if(!"".equals(txtNome.getText()) && txtNome.getText() != null && !"".equals(txtpreco.getText()) && txtpreco.getText() != null && !"".equals(txtqtd.getText()) && txtqtd.getText() != null && !"".equals(txtADescricao.getText()) && txtADescricao.getText() != null) {
+			componente.setNome(txtNome.getText());
+			componente.setDescrição(txtADescricao.getText());
+			componente.setPreco(Double.valueOf(txtpreco.getText()));
+			componente.setQtdPeca(Integer.valueOf(txtqtd.getText()));
+			return componente;
+			
 		}
 		return null;
-		
 	}
 
 }
