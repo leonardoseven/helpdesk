@@ -56,6 +56,9 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 		
 		
 		stage.addEventFilter(ActionEvent.ANY, this);
+		stage.setResizable(false);
+		stage.setScene(scene);
+		stage.setTitle("Menu");
 		stage.show();
 		
 	}
