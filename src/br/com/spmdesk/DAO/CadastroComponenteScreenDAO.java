@@ -18,7 +18,7 @@ public class CadastroComponenteScreenDAO {
 		try {
 			PreparedStatement stm = (PreparedStatement) con.prepareStatement(INSERTCOMPONENTE);
 			stm.setString(1, componente.getNome());
-			stm.setString(2, componente.getDescrição());
+			stm.setString(2, componente.getDescricao());
 			stm.setDouble(3, componente.getPreco());
 			stm.setInt(4, componente.getQtdPeca());
 			stm.execute();

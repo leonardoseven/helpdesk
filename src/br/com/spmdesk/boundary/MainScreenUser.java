@@ -21,7 +21,7 @@ public class MainScreenUser implements EventHandler<ActionEvent>, ChamarTela {
 	}
 
 	Button btnChamado = new Button("Abrir um chamado");
-	Button btnRequisicao = new Button("Abrir uma requisição");
+	Button btnRequisicao = new Button("Abrir uma requisiÃ§Ã£o");
 	
 	@Override
 	public void chamarTela(Stage stage) {
@@ -37,10 +37,10 @@ public class MainScreenUser implements EventHandler<ActionEvent>, ChamarTela {
 		
 		gridPainel.setAlignment(Pos.CENTER);
 		
-		// Espaçamento dos elementos
+		// Espaï¿½amento dos elementos
 		gridPainel.setHgap(25);
 		
-		// Botões
+		// Botï¿½es
 		btnChamado.setMinSize(300, 50);
 		btnRequisicao.setMinSize(300, 50);
 		gridPainel.add(btnChamado, 0, 1);
@@ -50,7 +50,7 @@ public class MainScreenUser implements EventHandler<ActionEvent>, ChamarTela {
 		
 		
 		
-		// Criação de cena e inicialização da mesma
+		// Criaï¿½ï¿½o de cena e inicializaï¿½ï¿½o da mesma
 		Scene scene = new Scene(border);
 		
 		stage.addEventFilter(ActionEvent.ANY, this);

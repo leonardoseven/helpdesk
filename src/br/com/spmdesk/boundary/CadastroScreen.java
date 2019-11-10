@@ -35,17 +35,17 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 
 	private CadastroScreenControl cadastroControl = new CadastroScreenControl();
 
-	Label lblCadastro = new Label("Cadastro de usu�rio");
-	Label lblNome = new Label("Insira o nome do funcion�rio");
+	Label lblCadastro = new Label("Cadastro de usuário");
+	Label lblNome = new Label("Insira o nome do funcionário");
 	TextField txtNome = new TextField();
-	Label lblUsuario = new Label("Insira o nome de usu�rio para o funcion�rio");
+	Label lblUsuario = new Label("Insira o nome de usuário para o funcionário");
 	TextField txtUsuario = new TextField();
-	Label lblSenha = new Label("Insira uma senha para funcion�rio");
+	Label lblSenha = new Label("Insira uma senha para funcionário");
 	PasswordField txtSenha = new PasswordField();
-	Label lblRegistro = new Label("Insira o registro do funcion�rio");
+	Label lblRegistro = new Label("Insira o registro do funcionário");
 	TextField txtRegistro = new TextField();
-	Label lblTipoUser = new Label("Informe o tipo de usu�rio");
-	Label lblSetor = new Label("Informe o Setor do funcion�rio");
+	Label lblTipoUser = new Label("Informe o tipo de usuário");
+	Label lblSetor = new Label("Informe o Setor do funcionário");
 	Button btnVoltar = new Button("Voltar");
 	Button cadastrar = new Button("CADASTRAR");
 	ObservableList<String> optionsSetor = FXCollections.observableArrayList(getListSetor());
@@ -107,7 +107,7 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 		
 		boolean possuiItemNoCombo = cadastroControl.possiuSetor();
 		if(!possuiItemNoCombo) {
-			new PopUpError("Voc� ainda n�o cadastrou um setor", "Cadastre um setor para cadastrar um usuario","br.com.spmdesk.boundary.CadastroSetorScreen", stage);
+			new PopUpError("Voc� ainda não cadastrou um setor", "Cadastre um setor para cadastrar um usu�rio","br.com.spmdesk.boundary.CadastroSetorScreen", stage);
 		}
 	}
 
@@ -123,7 +123,7 @@ public class CadastroScreen implements EventHandler<ActionEvent>, ChamarTela {
 		} else if (event.getTarget().equals(cadastrar)) {
 			List<String> dados = getValues();
 			if (dados == null) {
-				new PopUpError("Os campos n�o podem ser vazio", "Preencha todos os campos",
+				new PopUpError("Os campos não podem ser vazio", "Preencha todos os campos",
 						"br.com.spmdesk.boundary.CadastroScreen", stage);
 			} else {
 				cadastroControl.insertUsuario(dados);

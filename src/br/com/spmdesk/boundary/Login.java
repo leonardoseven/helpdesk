@@ -26,20 +26,20 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 	}
 	
 	
-	// Label de usuário e senha
-	Label lblUser = new Label("Digite o seu Usuário");
+	// Label de usuï¿½rio e senha
+	Label lblUser = new Label("Digite o seu UsuÃ¡rio");
 	Label lblPass = new Label("Digite a sua Senha");
 
 	// Area de recebimento de dados
 	TextField txtUser = new TextField();
 	PasswordField txtPass = new PasswordField();
 
-	// Botão para realização de login
+	// Botï¿½o para realizaï¿½ï¿½o de login
 	Button btnLogin = new Button("Login");
 	
 	@Override
 	public void chamarTela(Stage stage) {
-		// Criação  da GridPanel e customização
+		// Criaï¿½ï¿½o  da GridPanel e customizaï¿½ï¿½o
 		BorderPane border = new BorderPane();
 		GridPane gridPane = new GridPane();
 		gridPane.setStyle("-fx-background-color:#f8f4f3;");
@@ -91,7 +91,7 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 			}
 			else {
 				String title = "Opa, ocorreu um erro ao logar";
-				String subTitle = "Verifique seu usuário e senha se estão corretos";
+				String subTitle = "Verifique seu usuÃ¡rio e senha se estÃ£o corretos";
 			
 				new PopUpError(title, subTitle,"br.com.spmdesk.boundary.Login", stage);
 			}

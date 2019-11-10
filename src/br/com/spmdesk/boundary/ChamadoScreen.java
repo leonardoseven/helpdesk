@@ -71,7 +71,7 @@ public class ChamadoScreen implements EventHandler<ActionEvent>, ChamarTela {
 		gridpane.add(txtAssunto, 0, 3);
 		gridpane.add(new Label("Selecione o setor que vai receber esse chamado"),0, 4);
 		gridpane.add(tipoSetor, 0, 5);
-		gridpane.add(new Label("Digite a descrição do chamado"), 0, 6);
+		gridpane.add(new Label("Digite a descriÃ§Ã£o do chamado"), 0, 6);
 		gridpane.add(txtaDescricao, 0, 7);
 		gridpane.add(cadastrar, 0, 9); // column=0
 	

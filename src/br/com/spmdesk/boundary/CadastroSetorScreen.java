@@ -89,7 +89,7 @@ public class CadastroSetorScreen implements EventHandler<ActionEvent>, ChamarTel
 		}else if(event.getTarget().equals(cadastrar)) {
 			Setor setor = getSetor();
 			if(setor == null) {
-				new PopUpError("Os campos n�o podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.MainScreenAdmin", stage);
+				new PopUpError("Os campos não podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.MainScreenAdmin", stage);
 			}else {
 				cadastroSetorControl.saveSetor(setor);
 				new MainScreenAdmin(stage);

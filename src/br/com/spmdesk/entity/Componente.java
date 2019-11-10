@@ -2,7 +2,7 @@ package br.com.spmdesk.entity;
 public class Componente {
 	private String nome;
 	private double preco;
-	private String descrição;
+	private String descricao;
 	private int qtdPeca;
 	
 	public String getNome() {
@@ -17,11 +17,11 @@ public class Componente {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	public String getDescrição() {
-		return descrição;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setDescrição(String descrição) {
-		this.descrição = descrição;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	public int getQtdPeca() {
 		return qtdPeca;

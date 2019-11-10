@@ -19,9 +19,9 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 			this.stage = stage;
 	}
 	
-	Button btnGerenciarUsuario = new Button("Gest�o de Usu�rios");
-	Button btnGerenciarCR = new Button("Gest�o de C/R");
-	Button btnGerenciarEstoque = new Button("Gest�o de Estoque");
+	Button btnGerenciarUsuario = new Button("Gestão de Usuários");
+	Button btnGerenciarCR = new Button("Gestão de C/R");
+	Button btnGerenciarEstoque = new Button("Gestão de Estoque");
 	Button btnCadastrarSetor = new Button("Cadastrar Setor");
 	Button btnCadastrarComponente = new Button("Cadastrar Componente");
 	

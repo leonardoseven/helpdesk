@@ -24,7 +24,8 @@ import javafx.stage.Stage;
 
 public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 	private Stage stage;
-
+	Usuario usuario = User.getUsuario();
+	
 	public GestaoUsuario(Stage stage) {
 		chamarTela(stage);
 		this.stage = stage;
@@ -32,7 +33,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 
 	GestaoUsuarioControl gestaoControl = new GestaoUsuarioControl();
 	Button btnVoltar = new Button("Voltar");
-	Button btnCadastro = new Button("Novo Usu·rio");
+	Button btnCadastro = new Button("Novo Usu√°rio");
 	Button btnIns = new Button("Cadastro desativado");
 	
 	@Override
@@ -46,7 +47,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		border.setMinSize(800, 500);
 		bottom.getChildren().add(btnVoltar);
 		
-		gridpane.add(new Label("Usu·rios cadastrados:"), 0, 0);
+		gridpane.add(new Label("Usu√°rios cadastrados:"), 0, 0);
 		
 		Usuario usr = User.getUsuario();
 		
@@ -67,7 +68,6 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		
 		for (int i = 0; i < listaUsuario.size(); i++) {
 			
-			Usuario usuario = User.getUsuario();
 			gridpane.add(new Label(listaUsuario.get(i).getNome()), 0, i + 3);
 			if("inspetor".equals(usuario.getTipo())) {
 				gridpane.add(new Label("Acesso Negado"), 1, i + 3);
@@ -78,7 +78,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 			gridpane.add(new Label(listaUsuario.get(i).getTipo()), 2, i + 3);
 		}
 
-		gridpaneRigth.add(new Label("AÁıes"), 0, 0);
+		gridpaneRigth.add(new Label("A√ß√µes"), 0, 0);
 //		for (int i = 0; i < listaUsuario.size(); i++) {
 //			gridpaneRigth.add(new Button("Editar"),0, i+3);
 //			gridpaneRigth.add(new Button("Excluir"),1, i+3);
@@ -100,14 +100,13 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		stage.addEventFilter(ActionEvent.ANY, this);
 		stage.setResizable(false);
 		stage.setScene(scene);
-		stage.setTitle("Gest„o de Usu·rios");
+		stage.setTitle("Gest√£o de Usu√°rios");
 		stage.show();
 	}
 
 	@Override
 	public void handle(ActionEvent event) {
 		if (event.getTarget().equals(btnVoltar)) {
-				Usuario usuario = User.getUsuario();
 				if ("inspetor".equals(usuario.getTipo())) {
 					new MainScreenInspetor(stage);
 				} else {
@@ -118,7 +117,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 			new CadastroScreen(stage);
 		}
 		if (event.getTarget().equals(btnIns)) {
-			String title = "Ops... VocÍ n„o pode cadastrar usu·rios!";
+			String title = "Ops... Voc√™ n√£o pode cadastrar usu√°rios!";
 			String subTitle = "Apenas administradores podem criar Cadastros!";
 			new PopUpError(title, subTitle,"br.com.spmdesk.boundary.GestaoUsuario", stage);
 		}

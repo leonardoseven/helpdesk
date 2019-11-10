@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 
 public class GestaoEstoque implements EventHandler<ActionEvent>, ChamarTela {
 	private Stage stage;
+	Usuario usuario = User.getUsuario();
 
 	public GestaoEstoque(Stage stage) {
 		chamarTela(stage);
@@ -31,7 +32,7 @@ public class GestaoEstoque implements EventHandler<ActionEvent>, ChamarTela {
 	}
 
 	Button btnVoltar = new Button("Voltar");
-	Button btnCadastro = new Button("Novo Usuário");
+	Button btnCadastro = new Button("Novo UsuÃ¡rio");
 
 	@Override
 	public void chamarTela(Stage stage) {
@@ -44,7 +45,7 @@ public class GestaoEstoque implements EventHandler<ActionEvent>, ChamarTela {
 		border.setMinSize(800, 500);
 		bottom.getChildren().add(btnVoltar);
 
-		gridpane.add(new Label("Usuários Estoque:"), 0, 0);
+		gridpane.add(new Label("UsuÃ¡rios Estoque:"), 0, 0);
 
 		gridpane.add(new Label("Nome do componente"), 0, 1);
 		gridpane.add(new Label("Setor responsavel"), 1, 1);
@@ -67,7 +68,7 @@ public class GestaoEstoque implements EventHandler<ActionEvent>, ChamarTela {
 		stage.addEventFilter(ActionEvent.ANY, this);
 		stage.setResizable(false);
 		stage.setScene(scene);
-		stage.setTitle("Gestão de Estoque");
+		stage.setTitle("Gestï¿½o de Estoque");
 		stage.show();
 	}
 
@@ -75,7 +76,6 @@ public class GestaoEstoque implements EventHandler<ActionEvent>, ChamarTela {
 	public void handle(ActionEvent event) {
 		if (event.getTarget().equals(btnVoltar)) {
 			if (event.getTarget().equals(btnVoltar)) {
-				Usuario usuario = User.getUsuario();
 				if ("inspetor".equals(usuario.getTipo())) {
 					new MainScreenInspetor(stage);
 				} else {

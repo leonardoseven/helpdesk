@@ -21,10 +21,10 @@ public class MainScreenInspetor implements EventHandler<ActionEvent>, ChamarTela
 	}
 
 	Button btnChamado = new Button("Abrir um chamado");
-	Button btnRequisicao = new Button("Abrir uma requisição");
-	Button btnGerenciarUsuario = new Button("Gestão de Usuários");
-	Button btnGerenciarCR = new Button("Gestão de C/R");
-	Button btnGerenciarEstoque = new Button("Gestão de Estoque");
+	Button btnRequisicao = new Button("Abrir uma requisiÃ§Ã£o");
+	Button btnGerenciarUsuario = new Button("Gestï¿½o de UsuÃ¡rios");
+	Button btnGerenciarCR = new Button("GestÃ£o de C/R");
+	Button btnGerenciarEstoque = new Button("GestÃ£o de Estoque");
 	Button btnCadastrarSetor = new Button("Cadastrar Setor");
 	
 	
@@ -40,11 +40,11 @@ public class MainScreenInspetor implements EventHandler<ActionEvent>, ChamarTela
 		
 		gridPainel.setAlignment(Pos.CENTER);
 		
-		// Espaçamento dos elementos
+		// Espaï¿½amento dos elementos
 		gridPainel.setVgap(10);
 		gridPainel.setHgap(10);
 		
-		// Botões
+		// Botï¿½es
 		btnChamado.setMinSize(300, 50);
 		btnRequisicao.setMinSize(300, 50);
 		gridPainel.add(btnChamado, 0, 0);
@@ -70,7 +70,7 @@ public class MainScreenInspetor implements EventHandler<ActionEvent>, ChamarTela
 		btnCadastrarSetor.setStyle("-fx-font-size:20;");
 		
 		
-		// Criação de cena e inicialização da mesma
+		// Criaï¿½ï¿½o de cena e inicializaï¿½ï¿½o da mesma
 		Scene scene = new Scene(border);
 		
 		stage.addEventFilter(ActionEvent.ANY, this);

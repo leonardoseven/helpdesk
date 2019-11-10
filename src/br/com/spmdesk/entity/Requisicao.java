@@ -1,12 +1,10 @@
 package br.com.spmdesk.entity;
 
-import java.util.Date;
-
 public class Requisicao {
 	private String descricao;
 	private Usuario solicitante;
 	private String dataChamado;
-	private int qtdPeça;
+	private int qtdPeca;
 	private Componente nomePeca;
 	private String assunto;
 	
@@ -28,11 +26,11 @@ public class Requisicao {
 	public void setDataChamado(String dataChamado) {
 		this.dataChamado = dataChamado;
 	}
-	public int getQtdPeça() {
-		return qtdPeça;
+	public int getQtdPeca() {
+		return qtdPeca;
 	}
-	public void setQtdPeça(int qtdPeça) {
-		this.qtdPeça = qtdPeça;
+	public void setQtdPeca(int qtdPeca) {
+		this.qtdPeca = qtdPeca;
 	}
 	public Componente getNomePeca() {
 		return nomePeca;

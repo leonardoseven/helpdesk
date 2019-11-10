@@ -95,7 +95,7 @@ public class CadastroComponenteScreen implements EventHandler<ActionEvent>, Cham
 		}else if(event.getTarget().equals(cadastrar)) {
 			Componente componente = getComponente();
 			if(componente == null) {
-				new PopUpError("Os campos não podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.MainScreenAdmin", stage);
+				new PopUpError("Os campos nÃ£o podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.MainScreenAdmin", stage);
 			}else {
 				cadastroComponenteScreenControl.saveComponente(componente);
 				new MainScreenAdmin(stage);
@@ -109,8 +109,9 @@ public class CadastroComponenteScreen implements EventHandler<ActionEvent>, Cham
 		Componente componente = new Componente();
 		if(!"".equals(txtNome.getText()) && txtNome.getText() != null && !"".equals(txtpreco.getText()) && txtpreco.getText() != null && !"".equals(txtqtd.getText()) && txtqtd.getText() != null && !"".equals(txtADescricao.getText()) && txtADescricao.getText() != null) {
 			componente.setNome(txtNome.getText());
-			componente.setDescrição(txtADescricao.getText());
-			componente.setPreco(Double.valueOf(txtpreco.getText()));
+			componente.setDescricao(txtADescricao.getText());
+			String preco = txtpreco.getText().contains(",") ? txtpreco.getText().replace(",",".") : txtpreco.getText();   
+			componente.setPreco(Double.valueOf(preco));
 			componente.setQtdPeca(Integer.valueOf(txtqtd.getText()));
 			return componente;
 			

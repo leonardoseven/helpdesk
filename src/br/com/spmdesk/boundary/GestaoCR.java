@@ -38,9 +38,9 @@ public class GestaoCR implements EventHandler<ActionEvent>, ChamarTela {
 		bottom.getChildren().add(btnVoltar);
 		
 		gridpane.add(new Label("Requisitos e chamados ativos:"),0,0);
-		gridpane.add(new Label("Tipo (chamado ou requisição)"),0,1);
+		gridpane.add(new Label("Tipo (chamado ou requisiÃ§Ã£o)"),0,1);
 		gridpane.add(new Label("Solicitante"),1,1);
-		gridpane.add(new Label("Descrição "),2,1);
+		gridpane.add(new Label("Descriï¿½ï¿½o "),2,1);
 		gridpane.add(new Label("Setor"),3,1);
 		
 		gridpaneRigth.setHgap(5);
@@ -59,7 +59,7 @@ public class GestaoCR implements EventHandler<ActionEvent>, ChamarTela {
 		stage.addEventFilter(ActionEvent.ANY, this);
 		stage.setResizable(false);
 		stage.setScene(scene);
-		stage.setTitle("Gestão de CR");
+		stage.setTitle("Gestï¿½o de CR");
 		stage.show();
 	}
 

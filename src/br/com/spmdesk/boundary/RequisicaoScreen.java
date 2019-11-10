@@ -67,20 +67,20 @@ public class RequisicaoScreen implements EventHandler<ActionEvent>, ChamarTela {
 
 		gridpane.setAlignment(Pos.CENTER);
 
-		gridpane.add(new Label("Digite o assunto da requisição"), 0, 2);
+		gridpane.add(new Label("Digite o assunto da requisiÃ§Ã£o"), 0, 2);
 		gridpane.add(txtAssunto, 0, 3);
-		gridpane.add(new Label("Selecione o setor que vai receber essa requisição"), 0, 4);
+		gridpane.add(new Label("Selecione o setor que vai receber essa requisiÃ§Ã£o"), 0, 4);
 		gridpane.add(tipoSetor, 0, 5);
-		gridpane.add(new Label("Selecione o componente para essa requisição"), 0, 6);
+		gridpane.add(new Label("Selecione o componente para essa requisiÃ§Ã£o"), 0, 6);
 		gridpane.add(componentes, 0, 7);
-		gridpane.add(new Label("Digite a descrição do requisição"), 0, 8);
+		gridpane.add(new Label("Digite a descriÃ§Ã£o do requisiÃ§Ã£o"), 0, 8);
 		gridpane.add(txtaDescricao, 0, 9);
 		gridpane.add(cadastrar, 0, 11); // column=0
 
 		stage.addEventFilter(ActionEvent.ANY, this);
 		stage.setResizable(false);
 		stage.setScene(scene);
-		stage.setTitle("Cadastro de Requisição");
+		stage.setTitle("Cadastro de RequisiÃ§Ã£so");
 		stage.show();
 	}
 
