@@ -1,10 +1,10 @@
 package br.com.spmdesk.boundary;
-
 import br.com.smpdesk.control.CadastroSetorScreenControl;
 import br.com.spmdesk.entity.Setor;
 import br.com.spmdesk.entity.Usuario;
 import br.com.spmdesk.interfaces.ChamarTela;
 import br.com.spmdesk.utils.Background;
+import br.com.spmdesk.utils.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -75,22 +75,28 @@ public class CadastroSetorScreen implements EventHandler<ActionEvent>, ChamarTel
 		stage.setTitle("Cadastro de Setor");
 		stage.show();
 	}
-
+	
+	
 	@Override
 	public void handle(ActionEvent event) {
 		if(event.getTarget().equals(btnVoltar)) {
-			new MainScreenAdmin(stage);
+			Usuario usuario = User.getUsuario();
+			if ("inspetor".equals(usuario.getTipo())) {
+				new MainScreenInspetor(stage);
+			} else {
+				new MainScreenAdmin(stage);
+			}
 		}else if(event.getTarget().equals(cadastrar)) {
 			Setor setor = getSetor();
 			if(setor == null) {
-				new PopUpError("Os campos não podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.MainScreenAdmin", stage);
+				new PopUpError("Os campos nï¿½o podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.MainScreenAdmin", stage);
 			}else {
 				cadastroSetorControl.saveSetor(setor);
 				new MainScreenAdmin(stage);
 			}
 			
 		}
-
+ 
 	}
 	
 	public Setor getSetor(){

@@ -19,9 +19,9 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 			this.stage = stage;
 	}
 	
-	Button btnGerenciarUsuario = new Button("Gestão de Usuários");
-	Button btnGerenciarCR = new Button("Gestão de C/R");
-	Button btnGerenciarEstoque = new Button("Gestão de Estoque");
+	Button btnGerenciarUsuario = new Button("Gestï¿½o de Usuï¿½rios");
+	Button btnGerenciarCR = new Button("Gestï¿½o de C/R");
+	Button btnGerenciarEstoque = new Button("Gestï¿½o de Estoque");
 	Button btnCadastrarSetor = new Button("Cadastrar Setor");
 	Button btnCadastrarComponente = new Button("Cadastrar Componente");
 	
@@ -54,12 +54,8 @@ public class MainScreenAdmin implements EventHandler<ActionEvent>, ChamarTela{
 		gridpane.add(btnCadastrarSetor, 0, 1);
 		gridpane.add(btnCadastrarComponente, 1, 1);
 		
-		gridpane.setStyle("-fx-font-size: 20px;");
 		
 		stage.addEventFilter(ActionEvent.ANY, this);
-		stage.setResizable(false);
-		stage.setScene(scene);
-		stage.setTitle("Menu admin");
 		stage.show();
 		
 	}

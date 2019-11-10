@@ -41,8 +41,8 @@ public class MainScreenUser implements EventHandler<ActionEvent>, ChamarTela {
 		gridPainel.setHgap(25);
 		
 		// Botões
-		btnChamado.setMinSize(100, 100);
-		btnRequisicao.setMinSize(100, 100);
+		btnChamado.setMinSize(300, 50);
+		btnRequisicao.setMinSize(300, 50);
 		gridPainel.add(btnChamado, 0, 1);
 		gridPainel.add(btnRequisicao, 1, 1);
 		btnChamado.setStyle("-fx-font-size:20;");

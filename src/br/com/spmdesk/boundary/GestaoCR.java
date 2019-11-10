@@ -1,7 +1,9 @@
 package br.com.spmdesk.boundary;
-
+ 
+import br.com.spmdesk.entity.Usuario;
 import br.com.spmdesk.interfaces.ChamarTela;
 import br.com.spmdesk.utils.Background;
+import br.com.spmdesk.utils.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -64,7 +66,13 @@ public class GestaoCR implements EventHandler<ActionEvent>, ChamarTela {
 	@Override
 	public void handle(ActionEvent event) {
 		if(event.getTarget().equals(btnVoltar)) {
-			new MainScreenAdmin(stage);
+			Usuario usuario = User.getUsuario();
+			if("inspetor".equals(usuario.getTipo())) {
+				new MainScreenInspetor(stage);
+			}
+			else {
+				new MainScreenAdmin(stage);
+			}
 		}
 	}
 

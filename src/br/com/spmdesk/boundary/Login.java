@@ -87,10 +87,12 @@ public class Login implements EventHandler<ActionEvent>, ChamarTela {
 			}else if("padrao".equals(usuario.getTipo())) {
 				new MainScreenUser(stage);
 			}else if("inspetor".equals(usuario.getTipo())) {
+				new MainScreenInspetor(stage);
 			}
 			else {
 				String title = "Opa, ocorreu um erro ao logar";
 				String subTitle = "Verifique seu usuário e senha se estão corretos";
+			
 				new PopUpError(title, subTitle,"br.com.spmdesk.boundary.Login", stage);
 			}
 		}
