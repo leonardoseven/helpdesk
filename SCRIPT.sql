@@ -10,3 +10,9 @@ Create TABLE tbuser (
     );
 
     Insert into tbuser (nome, tipo, pass, registro, setor) VALUES ('admin', 'admin', 'dale','000','ADMIN');
+    
+CREATE table tbsetor ( 
+	id int PRIMARY KEY AUTO_INCREMENT, 
+	nome varchar(30) not null, 
+	nome_gestor varchar(30) not null 
+	);

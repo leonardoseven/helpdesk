@@ -1,8 +1,7 @@
 package br.com.spmdesk.boundary;
 
-import java.util.List;
-
 import br.com.smpdesk.control.CadastroScreenControl;
+import br.com.smpdesk.control.CadastroSetorScreenControl;
 import br.com.spmdesk.entity.Setor;
 import br.com.spmdesk.entity.Usuario;
 import br.com.spmdesk.interfaces.ChamarTela;
@@ -27,7 +26,7 @@ public class CadastroSetorScreen implements EventHandler<ActionEvent>, ChamarTel
 		chamarTela(stage);
 		this.stage = stage;
 	}
-	private CadastroScreenControl cadastroControl = new CadastroScreenControl();
+	private CadastroSetorScreenControl cadastroSetorControl = new CadastroSetorScreenControl();
 	
 	Label lblCadastro = new Label("Cadastro de Setor");
 	Label lblNome = new Label("Insira o nome do Setor");
@@ -83,25 +82,29 @@ public class CadastroSetorScreen implements EventHandler<ActionEvent>, ChamarTel
 		if(event.getTarget().equals(btnVoltar)) {
 			new GestaoUsuario(stage);
 		}else if(event.getTarget().equals(cadastrar)) {
-//			List<String> dados = getValues();
-//			if(dados == null) {
-//				new PopUpError("Os campos não podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.MainScreenAdmin", stage);
-//			}else {
-//				cadastroControl.insertUsuario(dados);
-//				new GestaoUsuario(stage);
-//			}
+			Setor setor = getSetor();
+			if(setor == null) {
+				new PopUpError("Os campos não podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.MainScreenAdmin", stage);
+			}else {
+				cadastroSetorControl.saveSetor(setor);
+				new MainScreenAdmin(stage);
+			}
 			
 		}
 
 	}
 	
-	public Setor getValues(){
+	public Setor getSetor(){
 		Setor setor = new Setor();
 		Usuario usuario = new Usuario();
-		usuario.setNomeSetor(txtUsuario.getText());
-		setor.setNomeSetor(txtNome.getText());
-		setor.setGestor(usuario);
-		return setor;
+		if( !"".equals(txtUsuario.getText()) && txtUsuario.getText() != null  && !"".equals(txtNome.getText()) && txtNome.getText() != null) {
+			usuario.setNomeSetor(txtUsuario.getText());
+			setor.setNomeSetor(txtNome.getText());
+			setor.setGestor(usuario);
+			return setor;
+		}
+		return null;
+		
 	}
 
 }
