@@ -7,33 +7,41 @@ import br.com.spmdesk.entity.Usuario;
 import br.com.spmdesk.interfaces.ChamarTela;
 import br.com.spmdesk.utils.Background;
 import br.com.spmdesk.utils.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 	private Stage stage;
 	Usuario usuario = User.getUsuario();
+	GestaoUsuarioControl gestaoControl = new GestaoUsuarioControl();
 	
+	ArrayList<Usuario> listaUsuario = gestaoControl.getAllUsers();
+
+    private TableView<Usuario> table = new TableView<Usuario>();
+    private final ObservableList<Usuario> data =
+        FXCollections.observableArrayList(listaUsuario);
+   
 	public GestaoUsuario(Stage stage) {
 		chamarTela(stage);
 		this.stage = stage;
 	}
 
-	GestaoUsuarioControl gestaoControl = new GestaoUsuarioControl();
+	
 	Button btnVoltar = new Button("Voltar");
-	Button btnCadastro = new Button("Novo Usu√°rio");
+	Button btnCadastro = new Button("Novo Usu·rio");
 	Button btnIns = new Button("Cadastro desativado");
 	
 	@Override
@@ -47,7 +55,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		border.setMinSize(800, 500);
 		bottom.getChildren().add(btnVoltar);
 		
-		gridpane.add(new Label("Usu√°rios cadastrados:"), 0, 0);
+		gridpane.add(new Label("Usu·rios cadastrados:"), 0, 0);
 		
 		Usuario usr = User.getUsuario();
 		
@@ -62,27 +70,50 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		gridpane.add(new Label("senha"), 1, 2);
 		gridpane.add(new Label("tipo"), 2, 2);
 
-		ArrayList<Usuario> listaUsuario = gestaoControl.getAllUsers();
-		//instancia de usuario
 		
+		table.setItems(data);
 		
-		for (int i = 0; i < listaUsuario.size(); i++) {
-			
-			gridpane.add(new Label(listaUsuario.get(i).getNome()), 0, i + 3);
-			if("inspetor".equals(usuario.getTipo())) {
-				gridpane.add(new Label("Acesso Negado"), 1, i + 3);
+		   TableColumn nome = new TableColumn("Nome");
+		   nome.setMinWidth(100);
+		   nome.setCellValueFactory(
+	       new PropertyValueFactory<Usuario, String>("nome"));
+	 
+	        TableColumn senha = new TableColumn("Senha");
+	        senha.setMinWidth(100);
+	        if("inspetor".equals(usuario.getTipo())) {
+	        	senha.setCellValueFactory(new PropertyValueFactory<String, String>("Acesso negado"));
+			}else {
+				senha.setCellValueFactory(
+				new PropertyValueFactory<Usuario, String>("pass"));
 			}
-			else {
-				gridpane.add(new Label(listaUsuario.get(i).getPass()), 1, i + 3);
-			}
-			gridpane.add(new Label(listaUsuario.get(i).getTipo()), 2, i + 3);
-		}
-
-		gridpaneRigth.add(new Label("A√ß√µes"), 0, 0);
+	        TableColumn tipoUsr = new TableColumn("Tipo");
+	        tipoUsr.setMinWidth(100);
+	        tipoUsr.setCellValueFactory(
+	        new PropertyValueFactory<Usuario, String>("tipo"));
+	        
+	        table.getColumns().addAll(nome, senha, tipoUsr);
+	        table.setItems(data);
+	           
+	        table.setMinSize(400,200);
+//		ArrayList<Usuario> listaUsuario = gestaoControl.getAllUsers();
+//		//instancia de usuario
 //		for (int i = 0; i < listaUsuario.size(); i++) {
-//			gridpaneRigth.add(new Button("Editar"),0, i+3);
-//			gridpaneRigth.add(new Button("Excluir"),1, i+3);
+//			
+//			gridpane.add(new Label(listaUsuario.get(i).getNome()), 0, i + 3);
+//			if("inspetor".equals(usuario.getTipo())) {
+//				gridpane.add(new Label("Acesso Negado"), 1, i + 3);
+//			}
+//			else {
+//				gridpane.add(new Label(listaUsuario.get(i).getPass()), 1, i + 3);
+//			}
+//			gridpane.add(new Label(listaUsuario.get(i).getTipo()), 2, i + 3);
 //		}
+//brabo do brabo
+//		gridpaneRigth.add(new Label("AÁıes"), 0, 0);
+////		for (int i = 0; i < listaUsuario.size(); i++) {
+////			gridpaneRigth.add(new Button("Editar"),0, i+3);
+////			gridpaneRigth.add(new Button("Excluir"),1, i+3);
+////		}
 
 		gridpaneRigth.setHgap(5);
 		gridpaneRigth.setVgap(5);
@@ -93,14 +124,14 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		gridpane.setVgap(10);
 
 		border.setTop(Background.getBackground(800, 100));
-		border.setCenter(gridpane);
+		border.setCenter(table);
 		border.setRight(gridpaneRigth);
 		border.setBottom(bottom);
 
 		stage.addEventFilter(ActionEvent.ANY, this);
 		stage.setResizable(false);
 		stage.setScene(scene);
-		stage.setTitle("Gest√£o de Usu√°rios");
+		stage.setTitle("Gest„o de Usu·rios");
 		stage.show();
 	}
 
@@ -117,7 +148,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 			new CadastroScreen(stage);
 		}
 		if (event.getTarget().equals(btnIns)) {
-			String title = "Ops... Voc√™ n√£o pode cadastrar usu√°rios!";
+			String title = "Ops... VocÍ n„o pode cadastrar usu·rios!";
 			String subTitle = "Apenas administradores podem criar Cadastros!";
 			new PopUpError(title, subTitle,"br.com.spmdesk.boundary.GestaoUsuario", stage);
 		}
