@@ -50,6 +50,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		Scene scene = new Scene(border);
 		GridPane gridpane = new GridPane();
 		GridPane gridpaneRigth = new GridPane();
+		GridPane gridpaneLeft = new GridPane();
 		FlowPane bottom = new FlowPane();
 
 		border.setMinSize(800, 500);
@@ -65,10 +66,10 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		else {
 			gridpane.add(btnCadastro, 0, 1);
 		}
-		
-		gridpane.add(new Label("nome"), 0, 2);
-		gridpane.add(new Label("senha"), 1, 2);
-		gridpane.add(new Label("tipo"), 2, 2);
+//		
+//		gridpane.add(new Label("nome"), 0, 2);
+//		gridpane.add(new Label("senha"), 1, 2);
+//		gridpane.add(new Label("tipo"), 2, 2);
 
 		
 		table.setItems(data);
@@ -81,7 +82,8 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 	        TableColumn senha = new TableColumn("Senha");
 	        senha.setMinWidth(100);
 	        if("inspetor".equals(usuario.getTipo())) {
-	        	senha.setCellValueFactory(new PropertyValueFactory<String, String>("Acesso negado"));
+	        	String ins = "Acesso negado";
+	        	senha.setCellValueFactory(new PropertyValueFactory<String, String>(ins));
 			}else {
 				senha.setCellValueFactory(
 				new PropertyValueFactory<Usuario, String>("pass"));
@@ -94,7 +96,8 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 	        table.getColumns().addAll(nome, senha, tipoUsr);
 	        table.setItems(data);
 	           
-	        table.setMinSize(400,200);
+	        table.setMinSize(100,200);
+		    gridpane.add(table, 0, 0);
 //		ArrayList<Usuario> listaUsuario = gestaoControl.getAllUsers();
 //		//instancia de usuario
 //		for (int i = 0; i < listaUsuario.size(); i++) {
@@ -117,15 +120,17 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 
 		gridpaneRigth.setHgap(5);
 		gridpaneRigth.setVgap(5);
-
+		gridpaneRigth.setMinSize(100, 100);
+		gridpaneLeft.setMinSize(100,100);
 		gridpane.setAlignment(Pos.CENTER);
 
 		gridpane.setHgap(20);
 		gridpane.setVgap(10);
 
 		border.setTop(Background.getBackground(800, 100));
-		border.setCenter(table);
+		border.setCenter(gridpane);
 		border.setRight(gridpaneRigth);
+		border.setLeft(gridpaneLeft);
 		border.setBottom(bottom);
 
 		stage.addEventFilter(ActionEvent.ANY, this);
