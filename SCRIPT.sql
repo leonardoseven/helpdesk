@@ -25,3 +25,21 @@ create table tbcomponente (
     quantidade int not null
 
 );
+
+create table tbchamado(
+	id int PRIMARY KEY AUTO_INCREMENT,
+	descricao varchar(50) not null,
+	setor varchar(50) not null,
+	assunto varchar(50) not null,
+	solicitante varchar(50) not null
+)
+
+create table tbrequisicao(
+	id int PRIMARY KEY AUTO_INCREMENT,
+	descricao varchar(50) not null,
+	setor varchar(50) not null,
+	assunto varchar(50) not null,
+	componente varchar(50) not null,
+	solicitante varchar(50) not null
+)
+

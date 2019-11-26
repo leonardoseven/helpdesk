@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.smpdesk.control.CadastroScreenControl;
+import br.com.smpdesk.control.ChamadoScreenControl;
+import br.com.spmdesk.entity.Chamado;
 import br.com.spmdesk.entity.Usuario;
 import br.com.spmdesk.interfaces.ChamarTela;
 import br.com.spmdesk.utils.Background;
@@ -24,18 +26,20 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class ChamadoScreen implements EventHandler<ActionEvent>, ChamarTela {
 
 
 	private Stage stage;
-
+	private ChamadoScreenControl c = new ChamadoScreenControl();
+	
 	public ChamadoScreen(Stage stage) {
 		chamarTela(stage);
 		this.stage = stage;
 	}
 	
-	ObservableList<String> optionsSetor = FXCollections.observableArrayList("RH","TI", "Comercial");
+	ObservableList<String> optionsSetor = FXCollections.observableArrayList(getListSetor());
 	
 	ComboBox tipoSetor = new ComboBox(optionsSetor);
 	
@@ -95,9 +99,28 @@ public class ChamadoScreen implements EventHandler<ActionEvent>, ChamarTela {
 			}
 			
 		} if(event.getTarget().equals(cadastrar)) {
-			
+			if(!txtAssunto.getText().equals("") && txtAssunto.getText() != null && txtAssunto.getText() != null && !txtAssunto.getText().equals("")) {
+				Usuario usuario = User.getUsuario();
+				Chamado chamado = new Chamado();
+				chamado.setSolicitante(usuario.getNome());
+				chamado.setAssunto(txtAssunto.getText());
+				chamado.setDescricao(txtaDescricao.getText());
+				String tipoSetores = tipoSetor.getSelectionModel().getSelectedItem().toString();
+				if(tipoSetores != null && !"".equals(tipoSetores)) {
+					chamado.setSetor(tipoSetores);
+				}
+				c.save(chamado);
+				new MainScreenUser(stage);
+			}else {
+				new PopUpError("Os campos não podem ser vazio", "Preencha todos os campos",
+						"br.com.spmdesk.boundary.ChamadoScreen", stage);
+			}
 		}
 
+	}
+	
+	private ArrayList<String> getListSetor() {
+		return c.getListSetor();
 	}
 
 }

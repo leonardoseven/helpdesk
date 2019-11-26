@@ -2,9 +2,24 @@ package br.com.spmdesk.entity;
 
 public class Requisicao {
 	private String descricao;
-	private Usuario solicitante;
+	private String solicitante;
 	private String dataChamado;
 	private int qtdPeca;
+	private String componente;
+	private String setor;
+	
+	public String getSetor() {
+		return setor;
+	}
+	public void setSetor(String setor) {
+		this.setor = setor;
+	}
+	public String getComponente() {
+		return componente;
+	}
+	public void setComponente(String componente) {
+		this.componente = componente;
+	}
 	private Componente nomePeca;
 	private String assunto;
 	
@@ -14,10 +29,10 @@ public class Requisicao {
 	public void setDescricao(String mensagemAjuda) {
 		this.descricao = mensagemAjuda;
 	}
-	public Usuario getSolicitante() {
+	public String getSolicitante() {
 		return solicitante;
 	}
-	public void setSolicitante(Usuario solicitante) {
+	public void setSolicitante(String solicitante) {
 		this.solicitante = solicitante;
 	}
 	public String getDataChamado() {

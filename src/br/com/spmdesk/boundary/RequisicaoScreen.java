@@ -1,5 +1,8 @@
 package br.com.spmdesk.boundary;
 
+import java.util.ArrayList;
+
+import br.com.smpdesk.control.RequisicaoScreenControl;
 import br.com.spmdesk.entity.Componente;
 import br.com.spmdesk.entity.Requisicao;
 import br.com.spmdesk.entity.Usuario;
@@ -21,22 +24,22 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class RequisicaoScreen implements EventHandler<ActionEvent>, ChamarTela {
 
 	private Stage stage;
-
+	private RequisicaoScreenControl c = new RequisicaoScreenControl();
+	
 	public RequisicaoScreen(Stage stage) {
 		chamarTela(stage);
 		this.stage = stage;
 	}
 
-	ObservableList<String> optionsSetor = FXCollections.observableArrayList("RH", "TI", "Comercial");
+	ObservableList<String> optionsSetor = FXCollections.observableArrayList(getList());
 	ComboBox tipoSetor = new ComboBox(optionsSetor);
 
-	ObservableList<String> optionscomponentes = FXCollections.observableArrayList("USB", "Celular", "Notebook");
+	ObservableList<String> optionscomponentes = FXCollections.observableArrayList(getListCom());
 	ComboBox componentes = new ComboBox(optionscomponentes);
 
 	TextField txtAssunto = new TextField();
@@ -85,33 +88,49 @@ public class RequisicaoScreen implements EventHandler<ActionEvent>, ChamarTela {
 	}
 
 	public Requisicao boundaryToControl() {
+		Usuario usuario = User.getUsuario();
 		Requisicao requisicao = new Requisicao();
 		Componente componente = new Componente();
-		componente.setNome(componentes.getSelectionModel().getSelectedItem().toString());
+		if(componentes.getSelectionModel().getSelectedItem().toString() != null && !"".equals(componentes.getSelectionModel().getSelectedItem().toString())) {
+			componente.setNome(componentes.getSelectionModel().getSelectedItem().toString());
+		}else {
+			new PopUpError("Os campos não podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.MainScreenUser", stage);
+		}
+		if(tipoSetor.getSelectionModel().getSelectedItem().toString() != null && !"".equals(tipoSetor.getSelectionModel().getSelectedItem().toString())) {
+			requisicao.setSetor(tipoSetor.getSelectionModel().getSelectedItem().toString());
+		}else {
+			new PopUpError("Os campos não podem ser vazio", "Preencha todos os campos", "br.com.spmdesk.boundary.MainScreenUser", stage);
+		}
 		requisicao.setDataChamado(DateUtils.now());
 		requisicao.setAssunto(txtAssunto.getText());
 		requisicao.setDescricao(txtaDescricao.getText());
-		requisicao.setNomePeca(componente);
-		// requisicao.setSolicitante();
+		requisicao.setComponente(componente.getNome());
+		requisicao.setSolicitante(usuario.getNome());
 		return requisicao;
 	}
 
 	@Override
 	public void handle(ActionEvent event) {
 		if (event.getTarget().equals(btnVoltar)) {
-			if (event.getTarget().equals(btnVoltar)) {
-				Usuario usuario = User.getUsuario();
-				if ("inspetor".equals(usuario.getTipo())) {
-					new MainScreenInspetor(stage);
-				} else {
-					new MainScreenUser(stage);
-				}
-
-			} else if (event.getTarget().equals(cadastrar)) {
-
+			Usuario usuario = User.getUsuario();
+			if ("inspetor".equals(usuario.getTipo())) {
+				new MainScreenInspetor(stage);
+			} else {
+				new MainScreenUser(stage);
 			}
 
+		} else if (event.getTarget().equals(cadastrar)) {
+			c.save(boundaryToControl());
+			new MainScreenUser(stage);
+			
 		}
-
+	}
+	
+	private ArrayList<String> getList(){
+		return c.getListSetor();
+	}
+	
+	private ArrayList<String> getListCom(){
+		return c.getListComponente();
 	}
 }

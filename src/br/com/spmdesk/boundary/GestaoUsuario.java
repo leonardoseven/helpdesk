@@ -41,7 +41,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 
 	
 	Button btnVoltar = new Button("Voltar");
-	Button btnCadastro = new Button("Novo Usuário");
+	Button btnCadastro = new Button("Novo Usuï¿½rio");
 	Button btnIns = new Button("Cadastro desativado");
 	
 	@Override
@@ -56,7 +56,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		border.setMinSize(800, 500);
 		bottom.getChildren().add(btnVoltar);
 		
-		gridpane.add(new Label("Usuários cadastrados:"), 0, 0);
+		gridpane.add(new Label("Usuï¿½rios cadastrados:"), 0, 0);
 		
 		Usuario usr = User.getUsuario();
 		
@@ -74,49 +74,30 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		
 		table.setItems(data);
 		
-		   TableColumn nome = new TableColumn("Nome");
-		   nome.setMinWidth(100);
-		   nome.setCellValueFactory(
-	       new PropertyValueFactory<Usuario, String>("nome"));
-	 
-	        TableColumn senha = new TableColumn("Senha");
-	        senha.setMinWidth(100);
-	        if("inspetor".equals(usuario.getTipo())) {
-	        	String ins = "Acesso negado";
-	        	senha.setCellValueFactory(new PropertyValueFactory<String, String>(ins));
-			}else {
-				senha.setCellValueFactory(
-				new PropertyValueFactory<Usuario, String>("pass"));
-			}
-	        TableColumn tipoUsr = new TableColumn("Tipo");
-	        tipoUsr.setMinWidth(100);
-	        tipoUsr.setCellValueFactory(
-	        new PropertyValueFactory<Usuario, String>("tipo"));
-	        
-	        table.getColumns().addAll(nome, senha, tipoUsr);
-	        table.setItems(data);
-	           
-	        table.setMinSize(100,200);
-		    gridpane.add(table, 0, 0);
-//		ArrayList<Usuario> listaUsuario = gestaoControl.getAllUsers();
-//		//instancia de usuario
-//		for (int i = 0; i < listaUsuario.size(); i++) {
-//			
-//			gridpane.add(new Label(listaUsuario.get(i).getNome()), 0, i + 3);
-//			if("inspetor".equals(usuario.getTipo())) {
-//				gridpane.add(new Label("Acesso Negado"), 1, i + 3);
-//			}
-//			else {
-//				gridpane.add(new Label(listaUsuario.get(i).getPass()), 1, i + 3);
-//			}
-//			gridpane.add(new Label(listaUsuario.get(i).getTipo()), 2, i + 3);
-//		}
-//brabo do brabo
-//		gridpaneRigth.add(new Label("Ações"), 0, 0);
-////		for (int i = 0; i < listaUsuario.size(); i++) {
-////			gridpaneRigth.add(new Button("Editar"),0, i+3);
-////			gridpaneRigth.add(new Button("Excluir"),1, i+3);
-////		}
+	   TableColumn nome = new TableColumn("Nome");
+	   nome.setMinWidth(100);
+	   nome.setCellValueFactory(
+       new PropertyValueFactory<Usuario, String>("nome"));
+ 
+        TableColumn senha = new TableColumn("Senha");
+        senha.setMinWidth(100);
+        if("inspetor".equals(usuario.getTipo())) {
+        	String ins = "Acesso negado";
+        	senha.setCellValueFactory(new PropertyValueFactory<String, String>(ins));
+		}else {
+			senha.setCellValueFactory(
+			new PropertyValueFactory<Usuario, String>("pass"));
+		}
+        TableColumn tipoUsr = new TableColumn("Tipo");
+        tipoUsr.setMinWidth(100);
+        tipoUsr.setCellValueFactory(
+        new PropertyValueFactory<Usuario, String>("tipo"));
+        
+        table.getColumns().addAll(nome, senha, tipoUsr);
+        table.setItems(data);
+           
+        table.setMinSize(100,200);
+	    gridpane.add(table, 0, 0);
 
 		gridpaneRigth.setHgap(5);
 		gridpaneRigth.setVgap(5);
@@ -136,7 +117,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 		stage.addEventFilter(ActionEvent.ANY, this);
 		stage.setResizable(false);
 		stage.setScene(scene);
-		stage.setTitle("Gestão de Usuários");
+		stage.setTitle("Gestï¿½o de Usuï¿½rios");
 		stage.show();
 	}
 
@@ -153,7 +134,7 @@ public class GestaoUsuario implements EventHandler<ActionEvent>, ChamarTela {
 			new CadastroScreen(stage);
 		}
 		if (event.getTarget().equals(btnIns)) {
-			String title = "Ops... Você não pode cadastrar usuários!";
+			String title = "Ops... Vocï¿½ nï¿½o pode cadastrar usuï¿½rios!";
 			String subTitle = "Apenas administradores podem criar Cadastros!";
 			new PopUpError(title, subTitle,"br.com.spmdesk.boundary.GestaoUsuario", stage);
 		}
